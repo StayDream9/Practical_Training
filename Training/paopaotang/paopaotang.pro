@@ -75,4 +75,5 @@ DISTFILES += \
     qml/entities/Floor.qml \
     qml/entities/WallEntityBase.qml \
     qml/map/Wall_lr.qml \
-    qml/map/Wall_tb.qml
+    qml/map/Wall_tb.qml \
+    qml/entities/Boom.qml

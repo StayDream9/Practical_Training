@@ -78,43 +78,43 @@ EntityBase {
         playerimage = "../../assets/player/p4_11.png"
     }
 
-    EntityManager {
-      id: entityManager
-      entityContainer: scene
-    }
+//    EntityManager {
+//      id: entityManager
+//      entityContainer: scene
+//    }
 
-    Scene{
-        id:scene
+//    Scene{
+//        id:scene
 
-        Component{
-            id:boomEntityComponent
-            EntityBase{
-                entityType: "boom"
+//        Component{
+//            id:boomEntityComponent
+//            EntityBase{
+//                entityType: "boom"
 
-                Image{
-                    id:boomImage
-//                    width: 20
-//                    height: 20
-                    source: "../../assets/wall/tree.png"
-                }
-            }
-        }
-    }
+//                Image{
+//                    id:boomImage
+////                    width: 20
+////                    height: 20
+//                    source: "../../assets/wall/tree.png"
+//                }
+//            }
+//        }
+//    }
 
-    function boom(){
-        console.debug(player.x)
-        console.debug(player.y)
-        var newEntityProperties = {
-                             x: 20,
-                             y: 100,
-//                             rotation: Math.random()*360
-                         }
+//    function boom(){
+//        console.debug(player.x)
+//        console.debug(player.y)
+//        var newEntityProperties = {
+//                             x: 20,
+//                             y: 100,
+////                             rotation: Math.random()*360
+//                         }
 
-                         entityManager.createEntityFromComponentWithProperties(
-                                     boomEntityComponent,
-                                     newEntityProperties);
+//                         entityManager.createEntityFromComponentWithProperties(
+//                                     boomEntityComponent,
+//                                     newEntityProperties);
 
-    }
+//    }
 
 }
 

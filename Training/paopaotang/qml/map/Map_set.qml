@@ -6,6 +6,12 @@ import "." as Walls
 Walls.WallBase {
     id:wall
     width: 42 * gameScene.gridSize
+    Boom{
+        x:80
+        y:40
+        size:1
+    }
+
     Obstacle1{
         row: 0
         column: 0
@@ -26,5 +32,7 @@ Walls.WallBase {
         column: 2
         size: 1
     }
+
+
 }
 
