@@ -70,8 +70,12 @@ DISTFILES += \
     qml/entities/Obstacle1.qml \
     qml/entities/Obstacle2.qml \
     qml/entities/WallEntityBase.qml \
-    qml/ListImage.qml \
     qml/entities/Obstacle3.qml \
     qml/entities/Box.qml \
-    qml/map/Map_set.qml \
-    qml/entities/Wall.qml
+    qml/entities/Wall.qml \
+    qml/menu/ImageButton.qml \
+    qml/menu/SelectLevelScene.qml \
+    qml/menu/MenuScene.qml \
+    qml/menu/CreditsScene.qml \
+    qml/entities/Boom.qml \
+    qml/map/Level1.qml

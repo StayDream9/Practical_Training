@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Felgo 3.0
 
 //树障碍物
-WallEntityBase{
+EntityBase{
     id:obstacle1
     entityType: "obstacle1"
 
@@ -16,17 +16,11 @@ WallEntityBase{
             anchors.fill: parent
             bodyType: Body.Static
         }
+        property int column: 0
+        property int row: 0
+        property int size // gets set in Platform.qml and Ground.qml
 
-//    BoxCollider {
-//      anchors.fill: parent
-//      bodyType: Body.Static
-//      fixture.onBeginContact: {
-//        var otherEntity = other.getBody().target
-//        if(otherEntity.entityType === "player") player.contacts++
-//      }
-//      fixture.onEndContact: {
-//        var otherEntity = other.getBody().target
-//        if(otherEntity.entityType === "player") player.contacts--
-//      }
-//    }
+        x: row * gameScene.gridSize
+        y: wall.height - (column+1)*gameScene.gridSize
 }
+

@@ -38,26 +38,11 @@ Scene {
         }
     }
 
-    Map_set{
-
-    }
-    Wall {height:parent.height; anchors.right:parent.left}
-    // right wall
-    Wall {height:parent.height; anchors.left:parent.right}
-    // ceiling
-    Wall {width:parent.width; anchors.bottom:parent.top}
-    // floor, if bullet hits it, the player failed the level
-    Wall {
-      width: gameScene.width
-      anchors.top: parent.bottom
+    Level1{
+        id:map
     }
 
 
-    Player{
-        id:player
-        x: 20
-        y:100
-    }
 
     Rectangle {
       // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
@@ -102,39 +87,20 @@ Scene {
       onInputActionPressed: {
         console.debug("key pressed actionName " + actionName)
         if(actionName == "up") {
-          player.top_change()
+          map.player.top_change()
         }
           if(actionName == "left"){
-            player.left_change()
+            map.player.left_change()
           }
           if(actionName == "right"){
-              player.right_change()
+              map.player.right_change()
           }
           if(actionName == "down"){
-              player.down_change()
+              map.player.down_change()
           }
       }
     }
 
-    //放炸弹
-    Component{
-        id:boomEntityComponent
-        EntityBase{
-            entityType: "boom"
-
-            Image{
-                id:boomImage
-                width: 20
-                height: 20
-                source: "../../assets/wall/tree.png"
-            }
-            BoxCollider{
-                width: 20
-                height: 20
-                bodyType: Body.Static
-            }
-        }
-    }
 
     Rectangle{
         anchors.right: parent.right
@@ -155,12 +121,12 @@ Scene {
                          onClicked: {
                              // if you click the scene, a new entity is created
                              var newEntityProperties = {
-                                 x: player.x,
-                                 y: player.y,
+                                 x: map.player.x,
+                                 y: map.player.y,
                              }
                              entityManager.createEntityFromComponentWithProperties(
-                                         boomEntityComponent,
-                                         newEntityProperties);
+
+                                         map.boom,newEntityProperties);
                          }
         }
     }

@@ -2,11 +2,12 @@ import QtQuick 2.0
 import Felgo 3.0
 //import ""
 
+
 EntityBase {
     id: player
     entityType: "player"
-    width: 20
-    height: 20
+    width: 18
+    height: 18
 
     property alias collider: collider
     property alias horizontalVelocity: collider.linearVelocity.x
@@ -19,26 +20,6 @@ EntityBase {
     property alias leftT: leftimage.running
     property alias upT: upimage.running
     property alias downT: downimage.running
-
-//    ListModel {
-//        id:model
-//        ListElement {
-//            name: "p1_11"
-//            picturePath: "../../assets/player/p1_11"
-//        }
-//        ListElement {
-//            name: "p1_12"
-//            picturePath: "../../assets/player/p1_12"
-//        }
-//        ListElement {
-//            name: "p1_13"
-//            picturePath: "../../assets/player/p1_13"
-//        }
-//        ListElement {
-//            name: "p1_14"
-//            picturePath: "../../assets/player/p1_14"
-//        }
-//    }
 
     MultiResolutionImage {
         id: playerima
@@ -149,8 +130,8 @@ EntityBase {
 
     BoxCollider {
         id: collider
-        height: parent.height
-        width: 20
+        height: 18
+        width: 18
         anchors.horizontalCenter: parent.horizontalCenter
         // this collider must be dynamic because we are moving it by applying forces and impulses
         bodyType: Body.Dynamic // this is the default value but I wanted to mention it ;)
@@ -234,41 +215,29 @@ EntityBase {
         playerimage3 = "../../assets/player/p4_11.png"
     }
 
-    EntityManager {
-      id: entityManager
-      entityContainer: scene
-    }
+//    EntityManager {
+//      id: entityManager
+//      entityContainer: scene
+//    }
 
-    Scene{
-        id:scene
+//    Scene{
+//        id:scene
 
-        Component{
-            id:boomEntityComponent
-            EntityBase{
-                entityType: "boom"
 
-                Image{
-                    id:boomImage
-                    width: 20
-                    height: 20
-                    source: "../../assets/wall/tree.png"
-                }
-            }
-        }
-    }
+//    }
 
-    function boom(){
-        console.debug(player.x)
-        console.debug(player.y)
-        var newEntityProperties = {
-                             x: 20,
-                             y: 100,
-                         }
-                         entityManager.createEntityFromComponentWithProperties(
-                                     boomEntityComponent,
-                                     newEntityProperties);
+//    function boom(){
+//        console.debug(player.x)
+//        console.debug(player.y)
+//        var newEntityProperties = {
+//                             x: 20,
+//                             y: 100,
+//                         }
+//                         entityManager.createEntityFromComponentWithProperties(
+//                                     boomEntityComponent,
+//                                     newEntityProperties);
 
-    }
+//    }
 
 }
 

@@ -62,15 +62,18 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/GameScene.qml \
 		../paopaotang/qml/Main.qml \
 		../paopaotang/qml/entities/Player.qml \
-		../paopaotang/qml/map/Map_set.qml \
 		../paopaotang/qml/entities/Obstacle1.qml \
 		../paopaotang/qml/entities/Obstacle2.qml \
-		../paopaotang/qml/entities/Floor.qml \
 		../paopaotang/qml/entities/WallEntityBase.qml \
-		../paopaotang/qml/map/Wall_lr.qml \
-		../paopaotang/qml/map/Wall_tb.qml \
+		../paopaotang/qml/entities/Obstacle3.qml \
+		../paopaotang/qml/entities/Box.qml \
+		../paopaotang/qml/entities/Wall.qml \
+		../paopaotang/qml/menu/ImageButton.qml \
+		../paopaotang/qml/menu/SelectLevelScene.qml \
+		../paopaotang/qml/menu/MenuScene.qml \
+		../paopaotang/qml/menu/CreditsScene.qml \
 		../paopaotang/qml/entities/Boom.qml \
-		../paopaotang/qml/ListImage.qml \
+		../paopaotang/qml/map/Level1.qml \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/unix.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/linux.conf \
