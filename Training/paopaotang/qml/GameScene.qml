@@ -9,15 +9,22 @@ Scene {
     height: 320
     gridSize: 20
 
+    MultiResolutionImage {
+        width: 480
+        height: 320
+      source: "../assets/land/24.16.png"
+      anchors.centerIn: gameScene.gameWindowAnchorItem
+    }
+
     EntityManager {
       id: entityManager
       entityContainer: gameScene
     }
 
-    Rectangle {
-      anchors.fill: gameScene.gameWindowAnchorItem
-      color: "black"
-    }
+//    Rectangle {
+//      anchors.fill: gameScene.gameWindowAnchorItem
+//      color: "black"
+//    }
 
     Item {
         id: viewPort
@@ -28,13 +35,23 @@ Scene {
             gravity:Qt.point(0,0)
             debugDrawVisible: true // enable this for physics debugging
             z: 1000
-
         }
     }
 
     Map_set{
 
     }
+    Wall {height:parent.height; anchors.right:parent.left}
+    // right wall
+    Wall {height:parent.height; anchors.left:parent.right}
+    // ceiling
+    Wall {width:parent.width; anchors.bottom:parent.top}
+    // floor, if bullet hits it, the player failed the level
+    Wall {
+      width: gameScene.width
+      anchors.top: parent.bottom
+    }
+
 
     Player{
         id:player

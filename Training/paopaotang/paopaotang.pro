@@ -39,8 +39,6 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    main.cpp \
-    main.cpp
 
 
 android {
@@ -69,11 +67,11 @@ DISTFILES += \
     qml/GameScene.qml \
     qml/Main.qml \
     qml/entities/Player.qml \
-    qml/map/Map_set.qml \
     qml/entities/Obstacle1.qml \
     qml/entities/Obstacle2.qml \
-    qml/entities/Floor.qml \
     qml/entities/WallEntityBase.qml \
-    qml/map/Wall_lr.qml \
-    qml/map/Wall_tb.qml \
-    qml/entities/Boom.qml
+    qml/ListImage.qml \
+    qml/entities/Obstacle3.qml \
+    qml/entities/Box.qml \
+    qml/map/Map_set.qml \
+    qml/entities/Wall.qml

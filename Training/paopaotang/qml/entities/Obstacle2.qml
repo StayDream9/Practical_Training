@@ -1,17 +1,15 @@
 import QtQuick 2.0
 import Felgo 3.0
 
+//红房子障碍物
 WallEntityBase{
     id:obstacle2
     entityType: "obstacle2"
 
     property int rand: Math.random()%3
 
-//    size: 2
-
-//    Item{
-//        id:obstimg_house
         MultiResolutionImage{
+            id: obswall
             height: 20
             width: 20
             property string house0: "../../assets/wall/redhouse.png"
@@ -25,7 +23,6 @@ WallEntityBase{
                     }
 //            source: "../../assets/wall/redhouse.png"
         }
-//    }
 
         BoxCollider{
             anchors.fill: parent

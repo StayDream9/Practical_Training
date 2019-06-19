@@ -10,8 +10,8 @@ WallEntityBase{
 //    Item{
 //        id:obstimg_house
         MultiResolutionImage{
-            height: 15
-            width: 15
+            height: 20
+            width: 20
             source: "../../assets/wall/stoneland.png"
         }
 //    }

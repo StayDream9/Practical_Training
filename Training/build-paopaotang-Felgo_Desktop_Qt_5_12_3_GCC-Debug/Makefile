@@ -52,12 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../paopaotang/main.cpp \
-		../paopaotang/main.cpp \
-		../paopaotang/main.cpp qrc_resources_user.cpp
+SOURCES       = ../paopaotang/main.cpp qrc_resources_user.cpp
 OBJECTS       = main.o \
-		main.o \
-		main.o \
 		qrc_resources_user.o
 DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/Main.qml \
@@ -66,12 +62,15 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/GameScene.qml \
 		../paopaotang/qml/Main.qml \
 		../paopaotang/qml/entities/Player.qml \
-		../paopaotang/qml/map/Wall_1.qml \
 		../paopaotang/qml/map/Map_set.qml \
 		../paopaotang/qml/entities/Obstacle1.qml \
 		../paopaotang/qml/entities/Obstacle2.qml \
 		../paopaotang/qml/entities/Floor.qml \
 		../paopaotang/qml/entities/WallEntityBase.qml \
+		../paopaotang/qml/map/Wall_lr.qml \
+		../paopaotang/qml/map/Wall_tb.qml \
+		../paopaotang/qml/entities/Boom.qml \
+		../paopaotang/qml/ListImage.qml \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/unix.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/linux.conf \
@@ -262,9 +261,7 @@ DIST          = ../paopaotang/qml/config.json \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/yacc.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/lex.prf \
-		../paopaotang/paopaotang.pro  ../paopaotang/main.cpp \
-		../paopaotang/main.cpp \
-		../paopaotang/main.cpp
+		../paopaotang/paopaotang.pro  ../paopaotang/main.cpp
 QMAKE_TARGET  = paopaotang
 DESTDIR       = 
 TARGET        = paopaotang
@@ -695,7 +692,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/felgo/Felgo/gcc_64/mkspecs/common/felgo/resources_user.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/felgo/Felgo/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../paopaotang/main.cpp ../paopaotang/main.cpp ../paopaotang/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../paopaotang/main.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -755,276 +752,6 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean 
 
 ####### Compile
-
-main.o: ../paopaotang/main.cpp /opt/felgo/Felgo/gcc_64/include/QtWidgets/QApplication \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qtcore-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsystemdetection.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qprocessordetection.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcompilerdetection.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qtypeinfo.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsysinfo.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qlogging.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qflags.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qbasicatomic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qgenericatomic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_msvc.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobalstatic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmutex.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qnumeric.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qversiontagging.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstring.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qchar.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearray.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qrefcount.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qnamespace.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qarraydata.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringliteral.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringalgorithms.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringview.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringbuilder.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qlist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qalgorithms.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qiterator.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qhashfunctions.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qpair.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearraylist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringlist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qregexp.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringmatcher.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcoreevent.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qscopedpointer.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmetatype.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qvarlengtharray.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcontainerfwd.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject_impl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qeventloop.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qpoint.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsize.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qcursor.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmargins.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qrect.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpalette.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qcolor.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qrgb.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qrgba64.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qbrush.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qvector.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qmatrix.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpolygon.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qregion.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qdatastream.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qiodevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qline.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtransform.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qimage.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpixmap.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsharedpointer.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qshareddata.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qhash.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qfont.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qevent.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qvariant.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmap.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qdebug.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qtextstream.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qlocale.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qset.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcontiguouscache.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qurl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qurlquery.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qfile.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qvector2d.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/felgo/Felgo/gcc_64/include/Felgo/FelgoApplication \
-		/opt/felgo/Felgo/gcc_64/include/Felgo/felgoapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QObject \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QAbstractAnimation \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qabstractanimation.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QStringList \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QVariantMap \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/QQmlApplicationEngine \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlapplicationengine.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlengine.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qjsengine.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qjsvalue.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qtqmlglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qtqml-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmldebug.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqml.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlprivate.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlparserstatus.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlpropertyvaluesource.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmllist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmetaobject.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlerror.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../paopaotang/main.cpp
-
-main.o: ../paopaotang/main.cpp /opt/felgo/Felgo/gcc_64/include/QtWidgets/QApplication \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qtcore-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsystemdetection.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qprocessordetection.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcompilerdetection.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qtypeinfo.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsysinfo.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qlogging.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qflags.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qbasicatomic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qgenericatomic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_msvc.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobalstatic.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmutex.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qnumeric.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qversiontagging.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstring.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qchar.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearray.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qrefcount.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qnamespace.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qarraydata.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringliteral.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringalgorithms.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringview.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringbuilder.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qlist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qalgorithms.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qiterator.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qhashfunctions.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qpair.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearraylist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringlist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qregexp.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringmatcher.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcoreevent.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qscopedpointer.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmetatype.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qvarlengtharray.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcontainerfwd.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject_impl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qeventloop.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qpoint.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsize.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qcursor.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmargins.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qrect.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpalette.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qcolor.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qrgb.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qrgba64.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qbrush.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qvector.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qmatrix.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpolygon.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qregion.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qdatastream.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qiodevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qline.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtransform.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qimage.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qpixmap.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsharedpointer.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qshareddata.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qhash.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qfont.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qevent.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qvariant.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmap.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qdebug.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qtextstream.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qlocale.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qset.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qcontiguouscache.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qurl.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qurlquery.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qfile.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qvector2d.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/felgo/Felgo/gcc_64/include/Felgo/FelgoApplication \
-		/opt/felgo/Felgo/gcc_64/include/Felgo/felgoapplication.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QObject \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QAbstractAnimation \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qabstractanimation.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QStringList \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/QVariantMap \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/QQmlApplicationEngine \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlapplicationengine.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlengine.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qjsengine.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qjsvalue.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qtqmlglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qtqml-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		/opt/felgo/Felgo/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmldebug.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqml.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlprivate.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlparserstatus.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlpropertyvaluesource.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmllist.h \
-		/opt/felgo/Felgo/gcc_64/include/QtCore/qmetaobject.h \
-		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlerror.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../paopaotang/main.cpp
 
 main.o: ../paopaotang/main.cpp /opt/felgo/Felgo/gcc_64/include/QtWidgets/QApplication \
 		/opt/felgo/Felgo/gcc_64/include/QtWidgets/qapplication.h \

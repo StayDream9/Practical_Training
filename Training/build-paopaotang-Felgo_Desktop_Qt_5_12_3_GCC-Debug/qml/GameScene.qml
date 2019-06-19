@@ -7,16 +7,24 @@ Scene {
     id: gameScene
     width: 480
     height: 320
-    gridSize: 15
+    gridSize: 20
+
+    MultiResolutionImage {
+        width: 480
+        height: 320
+      source: "../assets/land/24.16.png"
+      anchors.centerIn: gameScene.gameWindowAnchorItem
+    }
 
     EntityManager {
       id: entityManager
+      entityContainer: gameScene
     }
 
-    Rectangle {
-      anchors.fill: gameScene.gameWindowAnchorItem
-      color: "black"
-    }
+//    Rectangle {
+//      anchors.fill: gameScene.gameWindowAnchorItem
+//      color: "black"
+//    }
 
     Item {
         id: viewPort
@@ -27,18 +35,6 @@ Scene {
             gravity:Qt.point(0,0)
             debugDrawVisible: true // enable this for physics debugging
             z: 1000
-
-//            onPreSolve: {
-//              //this is called before the Box2DWorld handles contact events
-//              var entityA = contact.fixtureA.getBody().target
-//              var entityB = contact.fixtureB.getBody().target
-//              if(entityB.entityType === "platform" && entityA.entityType === "player" &&
-//                  entityA.y + entityA.height > entityB.y) {
-//                //by setting enabled to false, they can be filtered out completely
-//                //-> disable cloud platform collisions when the player is below the platform
-//                contact.enabled = false
-//              }
-//            }
         }
     }
 
@@ -56,7 +52,7 @@ Scene {
       // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
       //visible: !system.desktopPlatform
       //enabled: visible
-      anchors.right: parent.right
+      anchors.left: parent.left
       anchors.bottom: parent.bottom
       height: 50
       width: 150
@@ -69,6 +65,7 @@ Scene {
         height: parent.height
         color: "white"
       }
+      //行走控制
       MultiPointTouchArea {
         anchors.fill: parent
         onPressed: {
@@ -87,14 +84,74 @@ Scene {
       }
     }
 
+    //转方向时切换图片
     Keys.forwardTo: controller
     TwoAxisController {
       id: controller
       onInputActionPressed: {
         console.debug("key pressed actionName " + actionName)
-//        if(actionName == "up") {
-//          player.jump()
-//        }
+        if(actionName == "up") {
+          player.top_change()
+        }
+          if(actionName == "left"){
+            player.left_change()
+          }
+          if(actionName == "right"){
+              player.right_change()
+          }
+          if(actionName == "down"){
+              player.down_change()
+          }
       }
     }
+
+    //放炸弹
+    Component{
+        id:boomEntityComponent
+        EntityBase{
+            entityType: "boom"
+
+            Image{
+                id:boomImage
+                width: 20
+                height: 20
+                source: "../../assets/wall/tree.png"
+            }
+            BoxCollider{
+                width: 20
+                height: 20
+                bodyType: Body.Static
+            }
+        }
+    }
+
+    Rectangle{
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 50
+        width: 50
+        color: "red"
+        opacity: 0.4
+
+        Text {
+          anchors.centerIn: parent
+          text: "boom"
+          color: "white"
+          font.pixelSize: 9
+        }
+        MouseArea {
+            anchors.fill: parent
+                         onClicked: {
+                             // if you click the scene, a new entity is created
+                             var newEntityProperties = {
+                                 x: player.x,
+                                 y: player.y,
+                             }
+                             entityManager.createEntityFromComponentWithProperties(
+                                         boomEntityComponent,
+                                         newEntityProperties);
+                         }
+        }
+    }
 }
+
