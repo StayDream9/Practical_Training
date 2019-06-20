@@ -22,5 +22,7 @@ EntityBase{
 
         x: row * gameScene.gridSize
         y: wall.height - (column+1)*gameScene.gridSize
+        width: gameScene.gridSize * size
+        height: gameScene.gridSize
 }
 

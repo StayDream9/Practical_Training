@@ -2,22 +2,24 @@ import Felgo 3.0
 import QtQuick 2.0
 
 Item {
-  id: button
+    id: button
 
-  signal clicked
-  signal pressed
-  signal released
+    signal clicked
+    signal pressed
+    signal released
 
-  width: sprite.width
-  height: sprite.height
+    width: sprite.width
+    height: sprite.height
 
-  property alias source: sprite.source
+    property alias source: sprite.source
 
-  MultiResolutionImage {
+    MultiResolutionImage {
     id: sprite
-  }
+    width: 50
+    height: 30
+    }
 
-  MouseArea {
+    MouseArea {
     id: mouseArea
     enabled: button.enabled
     anchors.fill: button
@@ -26,16 +28,16 @@ Item {
     onClicked: button.clicked()
     onPressed: button.pressed()
     onReleased: button.released()
-  }
+    }
 
-  onClicked: {
-  }
+    onClicked: {
+    }
 
-  onPressed: {
-    opacity = 0.5
-  }
+    onPressed: {
+        opacity = 0.5
+    }
 
-  onReleased: {
-    opacity = 1.0
-  }
+    onReleased: {
+        opacity = 1.0
+    }
 }

@@ -2,6 +2,7 @@ import Felgo 3.0
 import QtQuick 2.0
 import "entities"
 import "map"
+import "common"
 
 Scene {
     id: gameScene
@@ -9,22 +10,39 @@ Scene {
     height: 320
     gridSize: 20
 
-    MultiResolutionImage {
-        width: 480
-        height: 320
-      source: "../assets/land/24.16.png"
-      anchors.centerIn: gameScene.gameWindowAnchorItem
+    // the filename of the current level gets stored here, it is used for loading the
+    property string activeLevelFileName
+    // the currently loaded level gets stored here
+    property variant activeLevel
+    property int countdown: 0
+    // flag indicating if game is running
+    property bool gameRunning: countdown == 0
+
+    //设置当前关卡的名字
+    function setLevel(fileName) {
+        activeLevelFileName = fileName
+    }
+
+    //加载关卡
+    // load levels at runtime
+    Loader {
+        id: loader
+        source: activeLevelFileName != "" ? "map/" + activeLevelFileName : ""
+        onLoaded: {
+            // since we did not define a width and height in the level item itself, we are doing it here
+            item.width = gameScene.width
+            item.height = gameScene.height
+            // store the loaded level as activeLevel for easier access
+            activeLevel = item
+            // restarts the countdown
+            countdown = 3
+        }
     }
 
     EntityManager {
       id: entityManager
       entityContainer: gameScene
     }
-
-//    Rectangle {
-//      anchors.fill: gameScene.gameWindowAnchorItem
-//      color: "black"
-//    }
 
     Item {
         id: viewPort
@@ -38,16 +56,10 @@ Scene {
         }
     }
 
-    Level1{
-        id:map
-    }
-
-
-
     Rectangle {
-      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
-      //visible: !system.desktopPlatform
-      //enabled: visible
+//      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
+//      //visible: !system.desktopPlatform
+//      //enabled: visible
       anchors.left: parent.left
       anchors.bottom: parent.bottom
       height: 50
@@ -61,23 +73,6 @@ Scene {
         height: parent.height
         color: "white"
       }
-      //行走控制
-      MultiPointTouchArea {
-        anchors.fill: parent
-        onPressed: {
-          if(touchPoints[0].x < width/2)
-            controller.xAxis = -1
-          else
-            controller.xAxis = 1
-        }
-        onUpdated: {
-          if(touchPoints[0].x < width/2)
-            controller.xAxis = -1
-          else
-            controller.xAxis = 1
-        }
-        onReleased: controller.xAxis = 0
-      }
     }
 
     //转方向时切换图片
@@ -87,20 +82,19 @@ Scene {
       onInputActionPressed: {
         console.debug("key pressed actionName " + actionName)
         if(actionName == "up") {
-          map.player.top_change()
+          activeLevel.player.top_change()
         }
           if(actionName == "left"){
-            map.player.left_change()
+            activeLevel.player.left_change()
           }
           if(actionName == "right"){
-              map.player.right_change()
+              activeLevel.player.right_change()
           }
           if(actionName == "down"){
-              map.player.down_change()
+              activeLevel.player.down_change()
           }
       }
     }
-
 
     Rectangle{
         anchors.right: parent.right
@@ -121,12 +115,14 @@ Scene {
                          onClicked: {
                              // if you click the scene, a new entity is created
                              var newEntityProperties = {
-                                 x: map.player.x,
-                                 y: map.player.y,
+//                                 x: activeLevel.player.x + 10,
+//                                 y: activeLevel.player.y + 10,
+                                  x: activeLevel.player.x,
+                                  y: activeLevel.player.y,
                              }
                              entityManager.createEntityFromComponentWithProperties(
 
-                                         map.boom,newEntityProperties);
+                                         activeLevel.boom,newEntityProperties);
                          }
         }
     }

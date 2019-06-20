@@ -74,6 +74,9 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/menu/CreditsScene.qml \
 		../paopaotang/qml/entities/Boom.qml \
 		../paopaotang/qml/map/Level1.qml \
+		../paopaotang/qml/map/Level2.qml \
+		../paopaotang/qml/map/Level3.qml \
+		../paopaotang/qml/entities/Fire.qml \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/unix.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/linux.conf \

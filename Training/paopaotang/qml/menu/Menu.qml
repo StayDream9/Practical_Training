@@ -14,13 +14,13 @@ Row {
     onClicked: {
       playPressed()
     }
-    source: "../../assets/play.png"
+    source: "../../assets/menu/start.png"
   }
 
   ImageButton {
     onClicked: {
       networkPressed()
     }
-    source: "../../assets/scores.png"
+    source: "../../assets/menu/bg.jpg"
   }
 }

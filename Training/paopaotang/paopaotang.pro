@@ -78,4 +78,7 @@ DISTFILES += \
     qml/menu/MenuScene.qml \
     qml/menu/CreditsScene.qml \
     qml/entities/Boom.qml \
-    qml/map/Level1.qml
+    qml/map/Level1.qml \
+    qml/map/Level2.qml \
+    qml/map/Level3.qml \
+    qml/entities/Fire.qml

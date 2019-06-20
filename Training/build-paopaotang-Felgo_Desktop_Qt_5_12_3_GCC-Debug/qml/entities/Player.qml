@@ -130,8 +130,8 @@ EntityBase {
 
     BoxCollider {
         id: collider
-        height: 18
-        width: 18
+        height: 17
+        width: 17
         anchors.horizontalCenter: parent.horizontalCenter
         // this collider must be dynamic because we are moving it by applying forces and impulses
         bodyType: Body.Dynamic // this is the default value but I wanted to mention it ;)
@@ -139,14 +139,14 @@ EntityBase {
         bullet: true // for super accurate collision detection, use this sparingly, because it's quite performance greedy
         sleepingAllowed: false
         // apply the horizontal value of the TwoAxisController as force to move the player left and right
-        force: Qt.point(controller.xAxis*170*32,-controller.yAxis*170*32)
+        force: Qt.point(controller.xAxis*40*32,-controller.yAxis*40*32)
 
         // limit the horizontal velocity
         onLinearVelocityChanged: {
-          if(linearVelocity.x > 170) linearVelocity.x = 170
-          if(linearVelocity.x < -170) linearVelocity.x = -170
-          if(linearVelocity.y > 170) linearVelocity.y = 170
-          if(linearVelocity.y < -170) linearVelocity.y = -170
+          if(linearVelocity.x > 40) linearVelocity.x = 40
+          if(linearVelocity.x < -40) linearVelocity.x = -40
+          if(linearVelocity.y > 40) linearVelocity.y = 40
+          if(linearVelocity.y < -40) linearVelocity.y = -40
 
         }
     }
@@ -214,30 +214,6 @@ EntityBase {
         playerimage = ""
         playerimage3 = "../../assets/player/p4_11.png"
     }
-
-//    EntityManager {
-//      id: entityManager
-//      entityContainer: scene
-//    }
-
-//    Scene{
-//        id:scene
-
-
-//    }
-
-//    function boom(){
-//        console.debug(player.x)
-//        console.debug(player.y)
-//        var newEntityProperties = {
-//                             x: 20,
-//                             y: 100,
-//                         }
-//                         entityManager.createEntityFromComponentWithProperties(
-//                                     boomEntityComponent,
-//                                     newEntityProperties);
-
-//    }
 
 }
 

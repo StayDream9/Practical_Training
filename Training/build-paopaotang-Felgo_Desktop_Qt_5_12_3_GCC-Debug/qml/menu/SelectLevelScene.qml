@@ -8,14 +8,9 @@ SceneBase {
     // signal indicating that a level has been selected
     signal levelPressed(string selectedLevel)
 
-    // background
-//    Rectangle {
-//        anchors.fill: parent.gameWindowAnchorItem
-//        color: "#ece468"
-//    }
     Image {
-      anchors.fill: menuScene.gameWindowAnchorItem
-      source: "../../assets/img/cocos.jpg"
+      anchors.fill: selectLevelScene.gameWindowAnchorItem
+      source: "../../assets/menu/bg1.jpg"
     }
     // back button to leave scene
     MenuButton {
@@ -34,7 +29,7 @@ SceneBase {
         spacing: 10
         columns: 5
         MenuButton {
-
+            opacity: 0.7
             text: "1"
             width: 50
             height: 50
@@ -43,6 +38,7 @@ SceneBase {
             }
         }
         MenuButton {
+            opacity: 0.7
             text: "2"
             width: 50
             height: 50
@@ -51,6 +47,7 @@ SceneBase {
             }
         }
         MenuButton {
+            opacity: 0.7
             text: "3"
             width: 50
             height: 50
@@ -58,13 +55,5 @@ SceneBase {
                 levelPressed("Level3.qml")
             }
         }
-//        Repeater {
-//            model: 10
-//            MenuButton {
-//                text: " "
-//                width: 50
-//                height: 50
-//            }
-//        }
     }
 }

@@ -18,6 +18,10 @@ EntityBase {
 
     }
 
+    Fire{
+
+    }
+
     Boom{
         id: boom
     }

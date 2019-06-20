@@ -9,6 +9,13 @@ Walls.WallBase {
     property alias player: player
     property alias boom: boom
 
+    MultiResolutionImage {
+        width: 480
+        height: 320
+      source: "../../assets/land/24.16.png"
+      anchors.centerIn: gameScene.gameWindowAnchorItem
+    }
+
     Player{
         id:player
         x:20
@@ -30,6 +37,7 @@ Walls.WallBase {
       anchors.top: parent.bottom
     }
 
+//地图
 //------------------------------------------
     Obstacle3{
         row: 2

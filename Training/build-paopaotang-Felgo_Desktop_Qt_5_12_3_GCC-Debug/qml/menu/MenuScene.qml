@@ -12,7 +12,7 @@ SceneBase {
 
     Image {
       anchors.fill: menuScene.gameWindowAnchorItem
-      source: "../../assets/img/bg.jpg"
+      source: "../../assets/menu/paopao.jpg"
     }
     // the "logo"
     Text {
