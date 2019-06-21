@@ -14,7 +14,6 @@ EntityBase{
     CircleCollider{
         radius: boximg.width/2
         anchors.centerIn: parent
-//        anchors.fill: parent
         bodyType: Body.Static
     }
     property int column: 0

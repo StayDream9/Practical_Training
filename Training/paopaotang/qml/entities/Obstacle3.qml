@@ -15,7 +15,6 @@ EntityBase{
     CircleCollider{
         radius: grassimg.width/2
         anchors.centerIn: parent
-//        anchors.fill: parent
         bodyType: Body.Static
     }
 

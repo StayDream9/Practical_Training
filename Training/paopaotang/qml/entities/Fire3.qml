@@ -42,7 +42,6 @@ EntityBase {
     CircleCollider {
         radius: fireimage3.width/2
         anchors.centerIn: parent
-//        anchors.fill: fireimage3
         collisionTestingOnlyMode: true
 
         //碰撞检测

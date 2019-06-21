@@ -1,6 +1,7 @@
 import Felgo 3.0
 import QtQuick 2.0
 import "../common"
+import "../../qml"
 
 SceneBase {
     id: selectLevelScene
@@ -22,6 +23,8 @@ SceneBase {
         anchors.topMargin: 10
         onClicked: backButtonPressed()
     }
+
+
 
     // levels to be selected
     Grid {

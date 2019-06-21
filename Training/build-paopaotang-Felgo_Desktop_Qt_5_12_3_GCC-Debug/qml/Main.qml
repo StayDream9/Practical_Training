@@ -33,6 +33,7 @@ GameWindow {
         onBackButtonPressed: {
             nativeUtils.displayMessageBox(qsTr("Really quit the game?"), "", 2);
         }
+
         // listen to the return value of the MessageBox
         Connections {
             target: nativeUtils

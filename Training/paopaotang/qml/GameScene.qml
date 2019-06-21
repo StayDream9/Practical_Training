@@ -11,7 +11,7 @@ Scene {
     gridSize: 20
 
 //    signal shooted()
-
+    property alias gameScene: gameScene
     // the filename of the current level gets stored here, it is used for loading the
     property string activeLevelFileName
     // the currently loaded level gets stored here
@@ -41,6 +41,8 @@ Scene {
         }
     }
 
+
+
     EntityManager {
       id: entityManager
       entityContainer: gameScene
@@ -60,7 +62,7 @@ Scene {
         PhysicsWorld{
             id:physicsWorld
             gravity:Qt.point(0,0)
-            debugDrawVisible: true // enable this for physics debugging
+//            debugDrawVisible: true // enable this for physics debugging
             z: 1000
         }
     }

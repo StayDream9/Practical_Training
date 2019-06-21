@@ -1,12 +1,17 @@
 import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
+import "../menu"
+import "../common"
+import "../"
 import "." as Walls
 
 Walls.WallBase {
     id:wall
     width: 42 * gameScene.gridSize
     property alias player: player
+
+    signal backselectPressed()
 
     MultiResolutionImage {
         width: 480
@@ -21,13 +26,12 @@ Walls.WallBase {
         y:100
     }
 
-//    Fire{
-//        id:fire
-//    }
+    MenuButton {
+        id:backBtn
+        text:"Back"
 
-//    Boom{
-//        id:boom
-//    }
+        onClicked: gameScene.backButtonPressed()
+    }
 
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall

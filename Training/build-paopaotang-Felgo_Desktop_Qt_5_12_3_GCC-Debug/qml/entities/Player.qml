@@ -16,13 +16,12 @@ EntityBase {
         width: 17
         height: 17
         running: true
-//        loops: 0
+
         source: "../../assets/player/player.json"
         frameNames: ["p1_11.png", "p1_12.png", "p1_13.png", "p1_14.png"]
         interpolate: false
         anchors.fill: parent
-        //          reverse: true
-        frameRate: 3
+        frameRate: 7
     }
 
     CircleCollider {

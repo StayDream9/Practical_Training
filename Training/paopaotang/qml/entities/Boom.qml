@@ -34,13 +34,11 @@ EntityBase{
       id: squabySprite1
       width: 17
       height: 17
-    //          loops: 0
       running: true
       source: "../../assets/image/boom1.json"
       frameNames: ["boom-1.png", "boom-2.png", "boom-3.png"]
       interpolate: false
       anchors.fill: parent
-    //          reverse: true
       frameRate: 3
     }
 
@@ -54,14 +52,12 @@ EntityBase{
       frameNames: ["boom-4.png", "boom-5.png", "boom-6.png", "boom-7.png"]
       interpolate: false
       anchors.fill: parent
-    //          reverse: true
       frameRate: 3
     }
 
     CircleCollider{
         radius: parent.width/2
         anchors.centerIn: parent
-//        anchors.fill: parent
         bodyType: Body.Static
         categories: Box.Category2
         collidesWith: Box.Category1

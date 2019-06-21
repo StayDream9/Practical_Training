@@ -9,7 +9,7 @@ EntityBase{
     property int rand/*: Math.random()%3*/
 
         MultiResolutionImage{
-            id: obswall
+            id: redhouseimg
             height: 20
             width: 20
             property string house0: "../../assets/wall/redhouse.png"
@@ -25,11 +25,8 @@ EntityBase{
         }
 
         CircleCollider{
-            radius: obswall.width/2
-//            width: 15
-//            height: 15
+            radius: redhouseimg.width/2
             anchors.centerIn: parent
-//            anchors.fill: parent
             bodyType: Body.Static
 
             //碰撞检测

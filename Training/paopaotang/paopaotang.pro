@@ -84,4 +84,5 @@ DISTFILES += \
     qml/entities/Fire.qml \
     qml/entities/Fire1.qml \
     qml/entities/Fire2.qml \
-    qml/entities/Fire3.qml
+    qml/entities/Fire3.qml \
+    qml/Control.qml

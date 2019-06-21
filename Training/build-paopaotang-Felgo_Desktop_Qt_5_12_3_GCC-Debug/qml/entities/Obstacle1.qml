@@ -15,10 +15,7 @@ EntityBase{
 
     CircleCollider{
         radius: treeimg.width/2
-//        width: 15
-//        height: 15
         anchors.centerIn: parent
-//        anchors.fill: parent
         bodyType: Body.Static
 
         //碰撞检测
