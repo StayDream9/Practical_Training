@@ -6,8 +6,8 @@ import Felgo 3.0
 EntityBase {
     id: player
     entityType: "player"
-    width: 18
-    height: 18
+    width: 20
+    height: 20
 
     property alias collider: collider
     property alias horizontalVelocity: collider.linearVelocity.x
@@ -139,14 +139,18 @@ EntityBase {
         bullet: true // for super accurate collision detection, use this sparingly, because it's quite performance greedy
         sleepingAllowed: false
         // apply the horizontal value of the TwoAxisController as force to move the player left and right
-        force: Qt.point(controller.xAxis*40*32,-controller.yAxis*40*32)
+        force: Qt.point(controller.xAxis*70*32,-controller.yAxis*70*32)
+
+
+        categories: Box.Category1
+        collidesWith: Box.Category1
 
         // limit the horizontal velocity
         onLinearVelocityChanged: {
-          if(linearVelocity.x > 40) linearVelocity.x = 40
-          if(linearVelocity.x < -40) linearVelocity.x = -40
-          if(linearVelocity.y > 40) linearVelocity.y = 40
-          if(linearVelocity.y < -40) linearVelocity.y = -40
+          if(linearVelocity.x > 70) linearVelocity.x = 70
+          if(linearVelocity.x < -70) linearVelocity.x = -70
+          if(linearVelocity.y > 70) linearVelocity.y = 70
+          if(linearVelocity.y < -70) linearVelocity.y = -70
 
         }
     }

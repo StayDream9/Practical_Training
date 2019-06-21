@@ -10,6 +10,7 @@ SceneBase {
     // signal indicating that the creditsScene should be displayed
     signal creditsPressed
 
+
     Image {
       anchors.fill: menuScene.gameWindowAnchorItem
       source: "../../assets/menu/paopao.jpg"

@@ -7,13 +7,13 @@ Walls.WallBase {
     id:wall
     width: 42 * gameScene.gridSize
     property alias player: player
-    property alias boom: boom
+//    property alias boom: boom
 
     MultiResolutionImage {
         width: 480
         height: 320
-      source: "../../assets/land/24.16.png"
-      anchors.centerIn: gameScene.gameWindowAnchorItem
+        source: "../../assets/land/24.16.png"
+        anchors.centerIn: gameScene.gameWindowAnchorItem
     }
 
     Player{
@@ -22,9 +22,13 @@ Walls.WallBase {
         y:100
     }
 
-    Boom{
-        id:boom
-    }
+//    Fire{
+//        id:fire
+//    }
+
+//    Boom{
+//        id:boom
+//    }
 
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall

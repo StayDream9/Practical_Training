@@ -65,7 +65,7 @@ GameWindow {
     // game scene to play a level
     GameScene {
         id: gameScene
-        onBackButtonPressed: window.state = "selectLevel"
+//        onBackButtonPressed: window.state = "selectLevel"
     }
 
     // menuScene is our first scene, so set the state to menu initially

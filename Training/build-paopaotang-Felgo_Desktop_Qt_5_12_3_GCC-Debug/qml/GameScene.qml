@@ -10,6 +10,8 @@ Scene {
     height: 320
     gridSize: 20
 
+    signal shooted()
+
     // the filename of the current level gets stored here, it is used for loading the
     property string activeLevelFileName
     // the currently loaded level gets stored here
@@ -42,6 +44,13 @@ Scene {
     EntityManager {
       id: entityManager
       entityContainer: gameScene
+      dynamicCreationEntityList: [
+          Qt.resolvedUrl("entities/Boom.qml"),
+          Qt.resolvedUrl("entities/Fire.qml"),
+          Qt.resolvedUrl("entities/Fire1.qml"),
+          Qt.resolvedUrl("entities/Fire2.qml"),
+          Qt.resolvedUrl("entities/Fire3.qml")
+      ]
     }
 
     Item {
@@ -96,6 +105,26 @@ Scene {
       }
     }
 
+    Keys.onPressed: {
+              if (event.key == Qt.Key_Space) {
+                  var destination = Qt.point(activeLevel.player.x+40, activeLevel.player.y)
+                  var initpoint = Qt.point(activeLevel.player.x, activeLevel.player.y)
+                  var realMoveDuration = 5000
+                  entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
+
+                  var newEntityProperties = {
+////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
+////                                 y: (activeLevel.player.y%20>=10)?(activeLevel.player.y/20+1)*20:(activeLevel.player.y/20)*20
+                       x: activeLevel.player.x,
+                       y: activeLevel.player.y
+                  }
+                  entityManager.createEntityFromUrlWithProperties(
+                              Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
+
+                  event.accepted = true;
+              }
+          }
+
     Rectangle{
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -112,17 +141,40 @@ Scene {
         }
         MouseArea {
             anchors.fill: parent
-                         onClicked: {
-                             // if you click the scene, a new entity is created
-                             var newEntityProperties = {
-//                                 x: activeLevel.player.x + 10,
-//                                 y: activeLevel.player.y + 10,
-                                  x: activeLevel.player.x,
-                                  y: activeLevel.player.y,
-                             }
-                             entityManager.createEntityFromComponentWithProperties(
+                 onClicked: {
+                     //炸弹爆炸
+                     var newEntityProperties = {
+////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
+////                                 y: (activeLevel.player.y%20>=10)?(activeLevel.player.y/20+1)*20:(activeLevel.player.y/20)*20
+                          x: activeLevel.player.x,
+                          y: activeLevel.player.y
+                     }
+                     entityManager.createEntityFromUrlWithProperties(
+                                 Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
 
-                                         activeLevel.boom,newEntityProperties);
+
+                    //火焰向右
+                     var destination = Qt.point(activeLevel.player.x+40, activeLevel.player.y+3)
+                     var initpoint = Qt.point(activeLevel.player.x, activeLevel.player.y)
+                     var realMoveDuration = 5000
+                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
+                     //火焰向左
+                     var destination1 = Qt.point(activeLevel.player.x-40, activeLevel.player.y+3)
+                     var initpoint1 = Qt.point(activeLevel.player.x, activeLevel.player.y)
+                     var realMoveDuration1 = 5000
+                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire1.qml"), {"initpoint": initpoint1,"destination": destination1, "moveDuration": realMoveDuration1})
+                     //火焰向上
+                     var destination2 = Qt.point(activeLevel.player.x+3, activeLevel.player.y-40)
+                     var initpoint2 = Qt.point(activeLevel.player.x, activeLevel.player.y)
+                     var realMoveDuration2 = 5000
+                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire2.qml"), {"initpoint": initpoint2,"destination": destination2, "moveDuration": realMoveDuration2})
+                     //火焰向下
+                     var destination3 = Qt.point(activeLevel.player.x+3, activeLevel.player.y+40)
+                     var initpoint3 = Qt.point(activeLevel.player.x, activeLevel.player.y)
+                     var realMoveDuration3 = 5000
+                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
+
+
                          }
         }
     }

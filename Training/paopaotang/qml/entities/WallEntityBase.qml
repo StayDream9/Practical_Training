@@ -5,6 +5,7 @@ import Felgo 3.0
 EntityBase {
   id: wallEntity
   property alias boom: boom
+  property alias fire: fire
   property int column: 0
   property int row: 0
   property int size // gets set in Platform.qml and Ground.qml
@@ -19,11 +20,13 @@ EntityBase {
     }
 
     Fire{
+        id:fire
 
     }
 
     Boom{
         id: boom
+//        boom1.removeT.onTriggered:fire.fireT.start()
     }
 
     Obstacle1{

@@ -81,4 +81,7 @@ DISTFILES += \
     qml/map/Level1.qml \
     qml/map/Level2.qml \
     qml/map/Level3.qml \
-    qml/entities/Fire.qml
+    qml/entities/Fire.qml \
+    qml/entities/Fire1.qml \
+    qml/entities/Fire2.qml \
+    qml/entities/Fire3.qml

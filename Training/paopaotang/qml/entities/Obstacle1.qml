@@ -6,23 +6,23 @@ EntityBase{
     id:obstacle1
     entityType: "obstacle1"
 
-        MultiResolutionImage{
-            height: 20
-            width: 20
-            source: "../../assets/wall/tree.png"
-        }
+    MultiResolutionImage{
+        height: 20
+        width: 20
+        source: "../../assets/wall/tree.png"
+    }
 
-        BoxCollider{
-            anchors.fill: parent
-            bodyType: Body.Static
-        }
-        property int column: 0
-        property int row: 0
-        property int size // gets set in Platform.qml and Ground.qml
+    BoxCollider{
+        anchors.fill: parent
+        bodyType: Body.Static
+    }
+    property int column: 0
+    property int row: 0
+    property int size // gets set in Platform.qml and Ground.qml
 
-        x: row * gameScene.gridSize
-        y: wall.height - (column+1)*gameScene.gridSize
-        width: gameScene.gridSize * size
-        height: gameScene.gridSize
+    x: row * gameScene.gridSize
+    y: wall.height - (column+1)*gameScene.gridSize
+    width: gameScene.gridSize * size
+    height: gameScene.gridSize
 }
 

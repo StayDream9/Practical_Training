@@ -1,15 +1,14 @@
 import QtQuick 2.0
 import Felgo 3.0
-//import "../"
 
 EntityBase {
-    entityType: "fire"
+    entityType: "fire2"
     width: 18;height: 18
 
     MultiResolutionImage {
         width: 15;height: 15
-        id: fireimage
-        source: "../../assets/fire/fireright.png"
+        id: fireimage2
+        source: "../../assets/fire/fireup.png"
     }
 
     // these values can then be set when a new projectile is created in the MouseArea below
@@ -30,13 +29,8 @@ EntityBase {
     }
 
     BoxCollider {
-        anchors.fill: fireimage
+        anchors.fill: fireimage2
         collisionTestingOnlyMode: true
     }
 }
-
-
-
-
-
 
