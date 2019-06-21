@@ -64,7 +64,6 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/entities/Player.qml \
 		../paopaotang/qml/entities/Obstacle1.qml \
 		../paopaotang/qml/entities/Obstacle2.qml \
-		../paopaotang/qml/entities/WallEntityBase.qml \
 		../paopaotang/qml/entities/Obstacle3.qml \
 		../paopaotang/qml/entities/Box.qml \
 		../paopaotang/qml/entities/Wall.qml \
@@ -81,6 +80,7 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/entities/Fire2.qml \
 		../paopaotang/qml/entities/Fire3.qml \
 		../paopaotang/qml/Control.qml \
+		../paopaotang/qml/common/LevelBase.qml \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/unix.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/linux.conf \

@@ -10,6 +10,7 @@ Rectangle {
     // round edges
     radius: 10
 
+    property alias label: label
     // the horizontal margin from the Text element to the Rectangle at both the left and the right side.
     property int paddingHorizontal: 10
     // the vertical margin from the Text element to the Rectangle at both the top and the bottom side.
@@ -44,5 +45,12 @@ Rectangle {
         onClicked: button.clicked()
         onPressed: button.opacity = 0.5
         onReleased: button.opacity = 1
+    }
+
+    Image {
+        id: label
+        anchors.centerIn: parent
+        width: parent.width
+        height: parent.height
     }
 }

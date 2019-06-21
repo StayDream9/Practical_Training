@@ -2,35 +2,32 @@ import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
 import "../menu"
-import "../common"
+import "../common" as Common
 import "../"
-import "." as Walls
+//import "." as Walls
 
-Walls.WallBase {
-    id:wall
+Common.LevelBase {
+    id:scene
+
+    height: gameScene.gridSize * 16
     width: 42 * gameScene.gridSize
     property alias player: player
 
-    signal backselectPressed()
+//    signal backselectPressed()
 
     MultiResolutionImage {
         width: 480
         height: 320
-        source: "../../assets/land/24.16.png"
+        source: "../../assets/land/grassland1.png"
         anchors.centerIn: gameScene.gameWindowAnchorItem
     }
+
+
 
     Player{
         id:player
         x:20
         y:100
-    }
-
-    MenuButton {
-        id:backBtn
-        text:"Back"
-
-        onClicked: gameScene.backButtonPressed()
     }
 
     Wall {height:parent.height; anchors.right:parent.left}
@@ -309,11 +306,6 @@ Walls.WallBase {
     //3
     Obstacle1{
         row: 0
-        column: 3
-        size: 1
-    }
-    Obstacle1{
-        row: 2
         column: 3
         size: 1
     }

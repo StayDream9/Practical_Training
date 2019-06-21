@@ -41,8 +41,6 @@ Scene {
         }
     }
 
-
-
     EntityManager {
       id: entityManager
       entityContainer: gameScene
@@ -71,40 +69,40 @@ Scene {
 
 //    }
 
-//    Rectangle {
-////      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
-////      //visible: !system.desktopPlatform
-////      //enabled: visible
-//      anchors.left: parent.left
-//      anchors.bottom: parent.bottom
-//      height: 50
-//      width: 150
-//      color: "blue"
-//      opacity: 0.4
+    Rectangle {
+//      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
+//      //visible: !system.desktopPlatform
+//      //enabled: visible
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      height: 50
+      width: 150
+      color: "blue"
+      opacity: 0.4
 
-//      Rectangle {
-//        anchors.centerIn: parent
-//        width: 1
-//        height: parent.height
-//        color: "white"
-//      }
-//      MultiPointTouchArea {
-//        anchors.fill: parent
-//        onPressed: {
-//          if(touchPoints[0].x < width/2)
-//            controller.xAxis = -1
-//          else
-//            controller.xAxis = 1
-//        }
-//        onUpdated: {
-//          if(touchPoints[0].x < width/2)
-//            controller.xAxis = -1
-//          else
-//            controller.xAxis = 1
-//        }
-//        onReleased: controller.xAxis = 0
-//      }
-//    }
+      Rectangle {
+        anchors.centerIn: parent
+        width: 1
+        height: parent.height
+        color: "white"
+      }
+      MultiPointTouchArea {
+        anchors.fill: parent
+        onPressed: {
+          if(touchPoints[0].x < width/2)
+            controller.xAxis = -1
+          else
+            controller.xAxis = 1
+        }
+        onUpdated: {
+          if(touchPoints[0].x < width/2)
+            controller.xAxis = -1
+          else
+            controller.xAxis = 1
+        }
+        onReleased: controller.xAxis = 0
+      }
+    }
 
     //转方向时切换图片
     Keys.forwardTo: controller
@@ -127,8 +125,11 @@ Scene {
       }
     }
 
+
+    property var people;
+
     Keys.onPressed: {
-              if (event.key == Qt.Key_Space) {
+              if (event.key === Qt.Key_Space) {
                   //炸弹爆炸
                   var newEntityProperties = {
 ////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
@@ -144,37 +145,8 @@ Scene {
                   event.accepted = true;
               }
           }
-    property var people;
-    Rectangle{
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        height: 50
-        width: 50
-        color: "red"
-        opacity: 0.4
 
-        Text {
-          anchors.centerIn: parent
-          text: "boom"
-          color: "white"
-          font.pixelSize: 9
-        }
-        MouseArea {
-            anchors.fill: parent
-                 onClicked: {
-                     //炸弹爆炸
-                     var newEntityProperties = {
-                          x: activeLevel.player.x,
-                          y: activeLevel.player.y
-                     }
-                     people=newEntityProperties
-                     entityManager.createEntityFromUrlWithProperties(
-                                 Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
-                     shot.start()
 
-                    }
-        }
-    }
     Timer{
         id:shot
         interval: 3000

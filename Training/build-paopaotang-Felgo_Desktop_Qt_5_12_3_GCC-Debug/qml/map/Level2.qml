@@ -1,10 +1,12 @@
 import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
-import "." as Walls
+import "../common" as Common
+//import "." as Walls
 
-Walls.WallBase {
-    id:wall
+Common.LevelBase {
+    id:scene
+    height: gameScene.gridSize * 16 // 32 * 21 = 320
     width: 42 * gameScene.gridSize
     property alias player: player
 

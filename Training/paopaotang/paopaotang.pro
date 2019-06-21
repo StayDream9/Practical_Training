@@ -69,7 +69,6 @@ DISTFILES += \
     qml/entities/Player.qml \
     qml/entities/Obstacle1.qml \
     qml/entities/Obstacle2.qml \
-    qml/entities/WallEntityBase.qml \
     qml/entities/Obstacle3.qml \
     qml/entities/Box.qml \
     qml/entities/Wall.qml \
@@ -85,4 +84,5 @@ DISTFILES += \
     qml/entities/Fire1.qml \
     qml/entities/Fire2.qml \
     qml/entities/Fire3.qml \
-    qml/Control.qml
+    qml/Control.qml \
+    qml/common/LevelBase.qml
