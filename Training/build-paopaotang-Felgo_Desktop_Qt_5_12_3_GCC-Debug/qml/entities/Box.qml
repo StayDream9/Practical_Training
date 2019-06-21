@@ -6,12 +6,15 @@ EntityBase{
     entityType: "box"
 
     MultiResolutionImage{
+        id:boximg
         height: 20
         width: 20
         source: "../../assets/wall/box.png"
     }
-    BoxCollider{
-        anchors.fill: parent
+    CircleCollider{
+        radius: boximg.width/2
+        anchors.centerIn: parent
+//        anchors.fill: parent
         bodyType: Body.Static
     }
     property int column: 0

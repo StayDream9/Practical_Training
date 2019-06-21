@@ -26,7 +26,6 @@ EntityBase{
         repeat: false
         onTriggered: {
             boom.removeEntity()
-    //                fire.shoot()
     }
         }
 
@@ -59,8 +58,10 @@ EntityBase{
       frameRate: 3
     }
 
-    BoxCollider{
-        anchors.fill: parent
+    CircleCollider{
+        radius: parent.width/2
+        anchors.centerIn: parent
+//        anchors.fill: parent
         bodyType: Body.Static
         categories: Box.Category2
         collidesWith: Box.Category1

@@ -7,12 +7,15 @@ EntityBase{
     entityType: "obstacle3"
 
     MultiResolutionImage{
+        id: grassimg
         height: 20
         width: 20
         source: "../../assets/wall/grass.png"
     }
-    BoxCollider{
-        anchors.fill: parent
+    CircleCollider{
+        radius: grassimg.width/2
+        anchors.centerIn: parent
+//        anchors.fill: parent
         bodyType: Body.Static
     }
 

@@ -7,7 +7,6 @@ Walls.WallBase {
     id:wall
     width: 42 * gameScene.gridSize
     property alias player: player
-//    property alias boom: boom
 
     MultiResolutionImage {
         width: 480

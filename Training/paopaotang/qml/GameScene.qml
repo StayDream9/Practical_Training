@@ -10,7 +10,7 @@ Scene {
     height: 320
     gridSize: 20
 
-    signal shooted()
+//    signal shooted()
 
     // the filename of the current level gets stored here, it is used for loading the
     property string activeLevelFileName
@@ -65,24 +65,44 @@ Scene {
         }
     }
 
-    Rectangle {
-//      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
-//      //visible: !system.desktopPlatform
-//      //enabled: visible
-      anchors.left: parent.left
-      anchors.bottom: parent.bottom
-      height: 50
-      width: 150
-      color: "blue"
-      opacity: 0.4
+//    Rectangle{
 
-      Rectangle {
-        anchors.centerIn: parent
-        width: 1
-        height: parent.height
-        color: "white"
-      }
-    }
+//    }
+
+//    Rectangle {
+////      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
+////      //visible: !system.desktopPlatform
+////      //enabled: visible
+//      anchors.left: parent.left
+//      anchors.bottom: parent.bottom
+//      height: 50
+//      width: 150
+//      color: "blue"
+//      opacity: 0.4
+
+//      Rectangle {
+//        anchors.centerIn: parent
+//        width: 1
+//        height: parent.height
+//        color: "white"
+//      }
+//      MultiPointTouchArea {
+//        anchors.fill: parent
+//        onPressed: {
+//          if(touchPoints[0].x < width/2)
+//            controller.xAxis = -1
+//          else
+//            controller.xAxis = 1
+//        }
+//        onUpdated: {
+//          if(touchPoints[0].x < width/2)
+//            controller.xAxis = -1
+//          else
+//            controller.xAxis = 1
+//        }
+//        onReleased: controller.xAxis = 0
+//      }
+//    }
 
     //转方向时切换图片
     Keys.forwardTo: controller
@@ -107,24 +127,22 @@ Scene {
 
     Keys.onPressed: {
               if (event.key == Qt.Key_Space) {
-                  var destination = Qt.point(activeLevel.player.x+40, activeLevel.player.y)
-                  var initpoint = Qt.point(activeLevel.player.x, activeLevel.player.y)
-                  var realMoveDuration = 5000
-                  entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
-
+                  //炸弹爆炸
                   var newEntityProperties = {
 ////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
 ////                                 y: (activeLevel.player.y%20>=10)?(activeLevel.player.y/20+1)*20:(activeLevel.player.y/20)*20
                        x: activeLevel.player.x,
                        y: activeLevel.player.y
                   }
+                  people=newEntityProperties
                   entityManager.createEntityFromUrlWithProperties(
                               Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
+                  shot.start()
 
                   event.accepted = true;
               }
           }
-
+    property var people;
     Rectangle{
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -144,39 +162,50 @@ Scene {
                  onClicked: {
                      //炸弹爆炸
                      var newEntityProperties = {
-////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
-////                                 y: (activeLevel.player.y%20>=10)?(activeLevel.player.y/20+1)*20:(activeLevel.player.y/20)*20
                           x: activeLevel.player.x,
                           y: activeLevel.player.y
                      }
+                     people=newEntityProperties
                      entityManager.createEntityFromUrlWithProperties(
                                  Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
+                     shot.start()
 
-
-                    //火焰向右
-                     var destination = Qt.point(activeLevel.player.x+40, activeLevel.player.y+3)
-                     var initpoint = Qt.point(activeLevel.player.x, activeLevel.player.y)
-                     var realMoveDuration = 5000
-                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
-                     //火焰向左
-                     var destination1 = Qt.point(activeLevel.player.x-40, activeLevel.player.y+3)
-                     var initpoint1 = Qt.point(activeLevel.player.x, activeLevel.player.y)
-                     var realMoveDuration1 = 5000
-                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire1.qml"), {"initpoint": initpoint1,"destination": destination1, "moveDuration": realMoveDuration1})
-                     //火焰向上
-                     var destination2 = Qt.point(activeLevel.player.x+3, activeLevel.player.y-40)
-                     var initpoint2 = Qt.point(activeLevel.player.x, activeLevel.player.y)
-                     var realMoveDuration2 = 5000
-                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire2.qml"), {"initpoint": initpoint2,"destination": destination2, "moveDuration": realMoveDuration2})
-                     //火焰向下
-                     var destination3 = Qt.point(activeLevel.player.x+3, activeLevel.player.y+40)
-                     var initpoint3 = Qt.point(activeLevel.player.x, activeLevel.player.y)
-                     var realMoveDuration3 = 5000
-                     entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
-
-
-                         }
+                    }
         }
     }
+    Timer{
+        id:shot
+        interval: 3000
+        repeat: false
+
+        onTriggered: {
+            fire()
+        }
+    }
+
+    function fire(){
+       //火焰向右
+            console.log(people.x,people.y)
+        var destination = Qt.point(people.x+45, people.y+3)
+        var initpoint = Qt.point(people.x, people.y)
+        var realMoveDuration = 1000
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
+        //火焰向左
+        var destination1 = Qt.point(people.x-45, people.y+3)
+        var initpoint1 = Qt.point(people.x, people.y)
+        var realMoveDuration1 = 1000
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire1.qml"), {"initpoint": initpoint1,"destination": destination1, "moveDuration": realMoveDuration1})
+        //火焰向上
+        var destination2 = Qt.point(people.x+3, people.y-45)
+        var initpoint2 = Qt.point(people.x, people.y)
+        var realMoveDuration2 = 1000
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire2.qml"), {"initpoint": initpoint2,"destination": destination2, "moveDuration": realMoveDuration2})
+        //火焰向下
+        var destination3 = Qt.point(people.x+3, people.y+45)
+        var initpoint3 = Qt.point(people.x, people.y)
+        var realMoveDuration3 = 1000
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
+    }
+
 }
 
