@@ -88,4 +88,5 @@ DISTFILES += \
     qml/common/LevelBase.qml \
     qml/entities/Cake.qml \
     qml/entities/Obstacle4.qml \
-    qml/entities/Obstacle5.qml
+    qml/entities/Obstacle5.qml \
+    qml/entities/prop/Flower.qml

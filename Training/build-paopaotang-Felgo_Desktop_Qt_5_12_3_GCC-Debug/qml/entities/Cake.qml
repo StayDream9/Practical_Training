@@ -2,22 +2,39 @@ import QtQuick 2.0
 import Felgo 3.0
 
 EntityBase{
-    id:box
-    entityType: "box"
+    id:cake
+    entityType: "cake"
+//    width: 20
+//    height: 20
 
-    MultiResolutionImage{
-        id:boximg
-        height: 15
-        width: 15
-        source: "../../assets/wall/box.png"
+    TexturePackerAnimatedSprite {
+      id: flowerimg
+      x:-8
+      y:-12
+      width: 40
+      height: 40
+      running: true
+      source: "../../assets/flower/flower.json"
+      frameNames: ["flower1.png", "flower2.png", "flower3.png", "flower4.png", "flower5.png", "flower6.png", "flower7.png", "flower8.png", "flower9.png", "flower10.png"]
+//      anchors.fill: parent
+      frameRate: 5
     }
+
+
+//    MultiResolutionImage{
+//        id:boximg
+//        height: 20;
+//        width: 20
+//        source: "../../assets/prop/pinkcake.png"
+//    }
+
     CircleCollider{
-        radius: boximg.width/2
+        radius: parent.width/2
         anchors.centerIn: parent
         bodyType: Body.Static
-
-//        categories: Box.Category3
-//        collidesWith: Box.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7
+//        anchors.fill: parent
+        categories: Circle.Category3
+        collidesWith: Circle.Category1 | Circle.Category4 | Circle.Category5 | Circle.Category6 | Circle.Category7
     }
     property int column: 0
     property int row: 0

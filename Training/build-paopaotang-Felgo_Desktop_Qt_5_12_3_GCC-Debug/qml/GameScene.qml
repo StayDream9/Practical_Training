@@ -10,6 +10,12 @@ Scene {
     height: 320
     gridSize: 20
 
+    property alias rightRect: rightRect
+    property alias leftRect: leftRect
+    property alias buttomRect: buttomRect
+    property alias topRect: topRect
+    property alias shootRect: shootRect
+    property alias centerRect: centerRect
 //    signal shooted()
     property alias gameScene: gameScene
     // the filename of the current level gets stored here, it is used for loading the
@@ -65,36 +71,36 @@ Scene {
         }
     }
 
-//    Player{
-//        id:player
-//        x:20
-//        y:100
-//    }
-
     property var boompoint;
 
     Rectangle{
-        color: "red"
-        width:50
-        height:50
+        id: shootRect
+        radius: 45
+        width:90
+        height:90
         anchors.left: parent.right
         anchors.bottom: parent.bottom
-        opacity: 0.4
+        opacity: 0
+
+        Image {
+            id: shootimg
+            source: "../assets/control/shot.png"
+
+            anchors.fill: parent
+        }
 
         MouseArea{
             anchors.fill: parent
             onClicked: {
                 //炸弹爆炸
                 var newEntityProperties = {
-////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
-////                                 y: (activeLevel.player.y%20>=10)?(activeLevel.player.y/20+1)*20:(activeLevel.player.y/20)*20
                      x: activeLevel.player.x,
                      y: activeLevel.player.y
                 }
                 boompoint=newEntityProperties
                 entityManager.createEntityFromUrlWithProperties(
                             Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
-                shot.start()
+                shotT.start()
 
                 event.accepted = true;
             }
@@ -104,12 +110,19 @@ Scene {
 
     //向右
     Rectangle {
-//        anchors.left: controlcenter.right
+        id: rightRect
         x: -30
         y: 260
         width: 30
         height: 30
-        color: "orange"
+        opacity: 0
+
+        Image {
+            id: rightimg
+            source: "../assets/control/controlright.png"
+
+            anchors.fill: parent
+        }
 
         MouseArea{
             anchors.fill: parent
@@ -123,13 +136,19 @@ Scene {
 
     //向左
     Rectangle{
-//        anchors.right: controlcenter.left
-//        anchors.centerIn: parent.right
+        id: leftRect
         x: -90
         y: 260
         width: 30
         height: 30
-        color: "pink"
+        opacity: 0
+
+        Image {
+            id: leftimg
+            source: "../assets/control/controlleft.png"
+
+            anchors.fill: parent
+        }
 
         MouseArea{
             anchors.fill: parent
@@ -143,13 +162,19 @@ Scene {
 
     //向下
     Rectangle{
-//        anchors.top: controlcenter.bottom
-//        anchors.centerIn: parent.top
+        id: buttomRect
         x: -60
         y: 290
         height: 30
         width: 30
-        color: "green"
+        opacity: 0
+
+        Image {
+            id: topimg
+            source: "../assets/control/controlbuttom.png"
+
+            anchors.fill: parent
+        }
 
         MouseArea{
             anchors.fill: parent
@@ -163,13 +188,42 @@ Scene {
 
     //向上
     Rectangle{
-//        anchors.bottom: controlcenter.top
-//        anchors.centerIn: parent.bottom
+        id:topRect
         x: -60
         y: 230
         height: 30
         width: 30
-        color: "blue"
+        opacity: 0
+        Image {
+            id: bottomimg
+            source: "../assets/control/controltop.png"
+
+            anchors.fill: parent
+        }
+
+        MouseArea{
+            anchors.fill: parent
+            onPressed: {
+                controller.yAxis = 1
+                activeLevel.player.top_change()
+                    }
+            onReleased: controller.yAxis = 0
+        }
+    }
+
+    Rectangle{
+        id: centerRect
+        x: -60
+        y: 260
+        height: 30
+        width: 30
+        opacity: 0
+        Image {
+            id: centerimg
+            source: "../assets/control/controlcenter.png"
+
+            anchors.fill: parent
+        }
 
         MouseArea{
             anchors.fill: parent
@@ -279,6 +333,7 @@ Scene {
         var realMoveDuration3 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
     }
+
 
 }
 

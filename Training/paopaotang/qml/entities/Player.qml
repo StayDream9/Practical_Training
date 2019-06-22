@@ -40,8 +40,8 @@ EntityBase {
         // apply the horizontal value of the TwoAxisController as force to move the player left and right
         force: Qt.point(controller.xAxis*30*32,-controller.yAxis*30*32)
 
-        categories: Box.Category1
-        collidesWith: Box.Category1 /*| Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7*/
+        categories: Circle.Category1
+        collidesWith: Circle.Category1 | Circle.Category3 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category8 | Circle.Category9 | Circle.Category10 | Circle.Category11 | Circle.Category12
 
         // limit the horizontal velocity
         onLinearVelocityChanged: {

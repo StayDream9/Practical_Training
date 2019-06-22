@@ -22,6 +22,7 @@ Common.LevelBase {
         y:100
     }
 
+
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall
     Wall {height:parent.height; anchors.left:parent.right}

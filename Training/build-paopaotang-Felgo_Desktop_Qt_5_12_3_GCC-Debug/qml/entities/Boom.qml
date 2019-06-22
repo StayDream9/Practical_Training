@@ -58,8 +58,8 @@ EntityBase{
         radius: parent.width/2
         anchors.centerIn: parent
         bodyType: Body.Static
-        categories: Box.Category2
-        collidesWith: Box.Category1
+        categories: Circle.Category2
+        collidesWith: Circle.Category1
     }
 }
 //}

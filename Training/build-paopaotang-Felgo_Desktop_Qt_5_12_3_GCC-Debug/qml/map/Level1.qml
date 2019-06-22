@@ -4,6 +4,7 @@ import "../entities"
 import "../menu"
 import "../common" as Common
 import "../"
+import "../entities/prop"
 
 Common.LevelBase {
     id:scene
@@ -11,6 +12,7 @@ Common.LevelBase {
     height: gameScene.gridSize * 16
     width: 42 * gameScene.gridSize
     property alias player: player
+//    property alias flowerimg: flowerimg
 
     MultiResolutionImage {
         width: 480
@@ -19,6 +21,18 @@ Common.LevelBase {
         anchors.centerIn: gameScene.gameWindowAnchorItem
     }
 
+//    TexturePackerAnimatedSprite {
+//      id: flowerimg
+//      x:13
+//      y:90
+//      width: 40
+//      height: 40
+//      running: true
+//      source: "../../assets/flower/flower.json"
+//      frameNames: ["flower1.png", "flower2.png", "flower3.png", "flower4.png", "flower5.png", "flower6.png", "flower7.png", "flower8.png", "flower9.png", "flower10.png"]
+////      anchors.fill: parent
+//      frameRate: 5
+//    }
 
     Player{
         id:player
@@ -39,6 +53,18 @@ Common.LevelBase {
 
 //地图
 //------------------------------------------
+    Flower{
+        row:3
+        column: 11
+        size:1
+    }
+
+    Cake{
+        row:0
+        column: 10
+        size:1
+    }
+
     Obstacle3{
         row: 2
         column: 0

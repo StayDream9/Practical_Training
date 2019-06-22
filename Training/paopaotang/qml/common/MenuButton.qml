@@ -3,7 +3,7 @@ import QtQuick 2.0
 Rectangle {
     id: button
     // this will be the default size, it is same size as the contained text + some padding
-    width: buttonText.width+ paddingHorizontal*2
+    width: buttonText.width+ paddingHorizontal*2-10
     height: buttonText.height+ paddingVertical*2
 
     color: "#e9e9e9"
@@ -22,13 +22,6 @@ Rectangle {
 
     // this handler is called when the button is clicked.
     signal clicked
-
-//    Image {
-//        id: label
-//        anchors.centerIn: parent
-//        width: parent.width
-//        height: parent.height
-//    }
 
     Text {
         font.family: gameFont.name

@@ -33,4 +33,5 @@ Common.LevelBase {
       width: gameScene.width
       anchors.top: parent.bottom
     }
+
 }

@@ -48,7 +48,7 @@ EntityBase {
         collisionTestingOnlyMode: true
 
         categories: Box.Category6
-        collidesWith: Box.Category1 | Box.Category3 | Box.Category10
+        collidesWith: Circle.Category1 | Circle.Category3 | Circle.Category8 | Circle.Category9 |Circle.Category10 |Circle.Category11 |Circle.Category12
 
         //碰撞检测
         fixture.onBeginContact: {
@@ -62,8 +62,13 @@ EntityBase {
             // remove the monster
             removeEntity()
           }
+          if(collidedEntity.entityType === "obstacle1" || collidedEntity.entityType === "obstacle2" || collidedEntity.entityType === "obstacle4" || collidedEntity.entityType === "obstacle5") {
+//            monstersDestroyed++
+
+            removeEntity()
+          }
           if(collidedEntity.entityType === "player"){
-//              collidedEntity.removeEntity()
+              collidedEntity.removeEntity()
               // remove the monster
               removeEntity()
               fire2.playerdie()

@@ -11,7 +11,7 @@ Item{
     property int size // gets set in Platform.qml and Ground.qml
 
     MenuButton {
-        x:-90
+        x:-70
         text: "back"
         label.height: 40
         label.width: 40

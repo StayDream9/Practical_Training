@@ -7,13 +7,6 @@ GameWindow {
     screenWidth: 960
     screenHeight: 640
 
-    // You get free licenseKeys from https://felgo.com/licenseKey
-    // With a licenseKey you can:
-    //  * Publish your games & apps for the app stores
-    //  * Remove the Felgo Splash Screen or set a custom one (available with the Pro Licenses)
-    //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
-    //licenseKey: "<generate one from https://felgo.com/licenseKey>"
-
     // create and remove entities at runtime
     EntityManager {
         id: entityManager
@@ -27,10 +20,13 @@ GameWindow {
     MenuScene {
         id: menuScene
         // listen to the button signals of the scene and change the state according to it
-        onSelectLevelPressed: window.state = "selectLevel"
+        onSelectLevelPressed: {
+            window.state = "selectLevel"
+        }
         onCreditsPressed: window.state = "credits"
         // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
         onBackButtonPressed: {
+
             nativeUtils.displayMessageBox(qsTr("Really quit the game?"), "", 2);
         }
 
@@ -50,11 +46,18 @@ GameWindow {
         id: selectLevelScene
         onLevelPressed: {
             // selectedLevel is the parameter of the levelPressed signal
+            gameScene.topRect.opacity = 0.5
+            gameScene.buttomRect.opacity = 0.5
+            gameScene.leftRect.opacity = 0.5
+            gameScene.rightRect.opacity = 0.5
+            gameScene.shootRect.opacity = 0.5
+            gameScene.centerRect.opacity = 0.5
             gameScene.setLevel(selectedLevel)
             window.state = "game"
-
         }
-        onBackButtonPressed: window.state = "menu"
+        onBackButtonPressed:{
+            window.state = "menu"
+        }
     }
 
     // credits scene
@@ -66,7 +69,16 @@ GameWindow {
     // game scene to play a level
     GameScene {
         id: gameScene
-        onBackButtonPressed: window.state = "selectLevel"
+        onBackButtonPressed: {
+            gameScene.topRect.opacity = 0
+            gameScene.buttomRect.opacity = 0
+            gameScene.leftRect.opacity = 0
+            gameScene.rightRect.opacity = 0
+            gameScene.shootRect.opacity = 0
+            gameScene.centerRect.opacity = 0
+
+            window.state = "selectLevel"
+        }
     }
 
     // menuScene is our first scene, so set the state to menu initially
