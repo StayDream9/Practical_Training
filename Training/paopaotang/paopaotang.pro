@@ -85,4 +85,6 @@ DISTFILES += \
     qml/entities/Fire2.qml \
     qml/entities/Fire3.qml \
     qml/Control.qml \
-    qml/common/LevelBase.qml
+    qml/common/LevelBase.qml \
+    qml/entities/Cake.qml \
+    qml/entities/ResetSensor.qml

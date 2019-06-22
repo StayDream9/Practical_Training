@@ -60,49 +60,119 @@ Scene {
         PhysicsWorld{
             id:physicsWorld
             gravity:Qt.point(0,0)
-//            debugDrawVisible: true // enable this for physics debugging
+            debugDrawVisible: true // enable this for physics debugging
             z: 1000
         }
     }
 
-//    Rectangle{
+    Rectangle{
+        color: "red"
+        width:50
+        height:50
+        anchors.left: parent.right
+        anchors.bottom: parent.bottom
+        opacity: 0.4
 
-//    }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                //炸弹爆炸
+                var newEntityProperties = {
+////                                 x: (activeLevel.player.x%20>=10)?(activeLevel.player.x/20+1)*20:(activeLevel.player.x/20)*20,
+////                                 y: (activeLevel.player.y%20>=10)?(activeLevel.player.y/20+1)*20:(activeLevel.player.y/20)*20
+                     x: activeLevel.player.x,
+                     y: activeLevel.player.y
+                }
+                people=newEntityProperties
+                entityManager.createEntityFromUrlWithProperties(
+                            Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
+                shot.start()
 
-    Rectangle {
-//      // you should hide those input controls on desktops, not only because they are really ugly in this demo, but because you can move the player with the arrow keys there
-//      //visible: !system.desktopPlatform
-//      //enabled: visible
-      anchors.left: parent.left
-      anchors.bottom: parent.bottom
-      height: 50
-      width: 150
-      color: "blue"
-      opacity: 0.4
-
-      Rectangle {
-        anchors.centerIn: parent
-        width: 1
-        height: parent.height
-        color: "white"
-      }
-      MultiPointTouchArea {
-        anchors.fill: parent
-        onPressed: {
-          if(touchPoints[0].x < width/2)
-            controller.xAxis = -1
-          else
-            controller.xAxis = 1
+                event.accepted = true;
+            }
         }
-        onUpdated: {
-          if(touchPoints[0].x < width/2)
-            controller.xAxis = -1
-          else
-            controller.xAxis = 1
-        }
-        onReleased: controller.xAxis = 0
-      }
+
     }
+
+    //向右
+    Rectangle {
+//        anchors.left: controlcenter.right
+        x: -30
+        y: 260
+        width: 30
+        height: 30
+        color: "orange"
+
+        MouseArea{
+            anchors.fill: parent
+            onPressed: {
+                controller.xAxis = 1
+                activeLevel.player.right_change()
+                    }
+            onReleased: controller.xAxis = 0
+        }
+    }
+
+    //向左
+    Rectangle{
+//        anchors.right: controlcenter.left
+//        anchors.centerIn: parent.right
+        x: -90
+        y: 260
+        width: 30
+        height: 30
+        color: "pink"
+
+        MouseArea{
+            anchors.fill: parent
+            onPressed: {
+                controller.xAxis = -1
+                activeLevel.player.left_change()
+                    }
+            onReleased: controller.xAxis = 0
+        }
+    }
+
+    //向下
+    Rectangle{
+//        anchors.top: controlcenter.bottom
+//        anchors.centerIn: parent.top
+        x: -60
+        y: 290
+        height: 30
+        width: 30
+        color: "green"
+
+        MouseArea{
+            anchors.fill: parent
+            onPressed: {
+                controller.yAxis = -1
+                activeLevel.player.down_change()
+                    }
+            onReleased: controller.yAxis = 0
+        }
+    }
+
+    //向上
+    Rectangle{
+//        anchors.bottom: controlcenter.top
+//        anchors.centerIn: parent.bottom
+        x: -60
+        y: 230
+        height: 30
+        width: 30
+        color: "blue"
+
+        MouseArea{
+            anchors.fill: parent
+            onPressed: {
+                controller.yAxis = 1
+                activeLevel.player.top_change()
+                    }
+            onReleased: controller.yAxis = 0
+        }
+    }
+
 
     //转方向时切换图片
     Keys.forwardTo: controller
@@ -126,7 +196,7 @@ Scene {
     }
 
 
-    property var people;
+    property var boompoint;
 
     Keys.onPressed: {
               if (event.key === Qt.Key_Space) {
@@ -137,7 +207,7 @@ Scene {
                        x: activeLevel.player.x,
                        y: activeLevel.player.y
                   }
-                  people=newEntityProperties
+                  boompoint=newEntityProperties
                   entityManager.createEntityFromUrlWithProperties(
                               Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
                   shot.start()
@@ -159,24 +229,24 @@ Scene {
 
     function fire(){
        //火焰向右
-            console.log(people.x,people.y)
-        var destination = Qt.point(people.x+45, people.y+3)
-        var initpoint = Qt.point(people.x, people.y)
+            console.debug(boompoint.x,boompoint.y)
+        var destination = Qt.point(boompoint.x+44, boompoint.y+2)
+        var initpoint = Qt.point(boompoint.x+4, boompoint.y+2)
         var realMoveDuration = 1000
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
         //火焰向左
-        var destination1 = Qt.point(people.x-45, people.y+3)
-        var initpoint1 = Qt.point(people.x, people.y)
+        var destination1 = Qt.point(boompoint.x-44, boompoint.y+2)
+        var initpoint1 = Qt.point(boompoint.x+4, boompoint.y+2)
         var realMoveDuration1 = 1000
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire1.qml"), {"initpoint": initpoint1,"destination": destination1, "moveDuration": realMoveDuration1})
         //火焰向上
-        var destination2 = Qt.point(people.x+3, people.y-45)
-        var initpoint2 = Qt.point(people.x, people.y)
+        var destination2 = Qt.point(boompoint.x+2, boompoint.y-44)
+        var initpoint2 = Qt.point(boompoint.x+2, boompoint.y+4)
         var realMoveDuration2 = 1000
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire2.qml"), {"initpoint": initpoint2,"destination": destination2, "moveDuration": realMoveDuration2})
         //火焰向下
-        var destination3 = Qt.point(people.x+3, people.y+45)
-        var initpoint3 = Qt.point(people.x, people.y)
+        var destination3 = Qt.point(boompoint.x+2, boompoint.y+44)
+        var initpoint3 = Qt.point(boompoint.x+2, boompoint.y+4)
         var realMoveDuration3 = 1000
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
     }

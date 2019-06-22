@@ -16,6 +16,9 @@ EntityBase{
         radius: grassimg.width/2
         anchors.centerIn: parent
         bodyType: Body.Static
+
+//        categories: Box.Category10
+//        collidesWith: Box.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7
     }
 
     property int column: 0

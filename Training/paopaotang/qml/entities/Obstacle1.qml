@@ -18,6 +18,9 @@ EntityBase{
         anchors.centerIn: parent
         bodyType: Body.Static
 
+//        categories: Box.Category8
+//        collidesWith: Box.Category1
+
         //碰撞检测
         fixture.onBeginContact: {
 

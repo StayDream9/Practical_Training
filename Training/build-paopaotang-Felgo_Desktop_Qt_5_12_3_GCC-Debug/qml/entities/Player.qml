@@ -41,7 +41,7 @@ EntityBase {
 
 
         categories: Box.Category1
-        collidesWith: Box.Category1
+        collidesWith: Box.Category1 /*| Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7*/
 
         // limit the horizontal velocity
         onLinearVelocityChanged: {

@@ -6,6 +6,8 @@ EntityBase {
     entityType: "fire3"
     width: 15;height: 15
 
+    signal playerdie()
+
     MultiResolutionImage {
         width: 15;height: 15
         id: fireimage3
@@ -39,10 +41,13 @@ EntityBase {
         duration: moveDuration
     }
 
-    CircleCollider {
-        radius: fireimage3.width/2
+    BoxCollider {
+        width: 10;height: 10
         anchors.centerIn: parent
         collisionTestingOnlyMode: true
+
+//        categories: Box.Category7
+//        collidesWith: Box.Category1 | Box.Category3 | Box.Category10
 
         //碰撞检测
         fixture.onBeginContact: {
@@ -57,6 +62,12 @@ EntityBase {
             collidedEntity.removeEntity()
             // remove the monster
             removeEntity()
+          }
+          if(collidedEntity.entityType === "player"){
+              collidedEntity.removeEntity()
+              // remove the monster
+              removeEntity()
+              playerdie()
           }
         }
     }

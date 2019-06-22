@@ -12,17 +12,13 @@ Item{
     property int row: 0
     property int size // gets set in Platform.qml and Ground.qml
 
-//    x: row * gameScene.gridSize
-//    y: scene.height - (column+1)*gameScene.gridSize
-//    width: gameScene.gridSize * size
-//    height: gameScene.gridSize
-
     MenuButton {
+        x:-90
         text: "back"
-        label.height: 45
-        label.width: 45
-//        label.source: "../../assets/img/Back.png"
-        color: "transparent"
+        label.height: 40
+        label.width: 40
+
+        color: "white"
         z: 10
         anchors.right: gameWindowAnchorItem.right
         anchors.verticalCenter: gameWindowAnchorItem.verticalCenter
@@ -36,9 +32,9 @@ Item{
         activeLevelFileName = ""
     }
 
-    Box{
+//    Box{
 
-    }
+//    }
 
     Fire{
         id:fire
@@ -58,10 +54,6 @@ Item{
     }
     Obstacle3{
 
-    }
-
-    Player{
-        id:player1
     }
 
     Wall{

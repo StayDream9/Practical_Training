@@ -2,7 +2,6 @@ import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
 import "../common" as Common
-//import "." as Walls
 
 Common.LevelBase {
     id:scene
@@ -23,6 +22,17 @@ Common.LevelBase {
         y:100
     }
 
+//    ResetSensor {
+//      height: 10
+//      x: player.x
+//      anchors.bottom: bottom.bottom
+//      // if the player collides with the reset sensor, he goes back to the start
+//      onContact: {
+//        player.x = 20
+//        player.y = 100
+//      }
+//    }
+
 
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall
@@ -31,8 +41,9 @@ Common.LevelBase {
     Wall {width:parent.width; anchors.bottom:parent.top}
     // floor, if bullet hits it, the player failed the level
     Wall {
-      width: gameScene.width
-      anchors.top: parent.bottom
+        id:bottom
+        width: gameScene.width
+        anchors.top: parent.bottom
     }
 
 //地图

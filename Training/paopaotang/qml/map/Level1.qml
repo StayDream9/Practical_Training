@@ -4,7 +4,6 @@ import "../entities"
 import "../menu"
 import "../common" as Common
 import "../"
-//import "." as Walls
 
 Common.LevelBase {
     id:scene
@@ -12,8 +11,6 @@ Common.LevelBase {
     height: gameScene.gridSize * 16
     width: 42 * gameScene.gridSize
     property alias player: player
-
-//    signal backselectPressed()
 
     MultiResolutionImage {
         width: 480
@@ -28,7 +25,32 @@ Common.LevelBase {
         id:player
         x:20
         y:100
+
     }
+
+//    Fire1{
+////        width: player.width
+//        onContact: {
+//            player.x = 20
+//            player.y = 100
+//        }
+//    }
+
+//    ResetSensor {
+//      width: player.width
+//      height: 10
+//      x: player.x
+//      anchors.bottom: viewPort.bottom
+//      // if the player collides with the reset sensor, he goes back to the start
+//      onContact: {
+////        player.x = 20
+////            ratio : Qt.point(0,0)
+//        psb.running = false
+//          player.x = playerx-30
+//        player.y = 100
+//          psb.running = true
+//      }
+
 
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall
