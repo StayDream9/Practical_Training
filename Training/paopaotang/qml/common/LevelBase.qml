@@ -28,6 +28,8 @@ Item{
 
     function resetLevel(){
         activeLevelFileName = ""
+//        var toRemoveEntityTypes1 = ["boom", "fire", "fire1", "fire2", "fire3"]
+//        entityManager.removeEntitiesByFilter(toRemoveEntityTypes1)
     }
 
 }

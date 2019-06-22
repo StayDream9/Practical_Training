@@ -12,7 +12,6 @@ Common.LevelBase {
     height: gameScene.gridSize * 16
     width: 42 * gameScene.gridSize
     property alias player: player
-//    property alias flowerimg: flowerimg
 
     MultiResolutionImage {
         width: 480
@@ -21,23 +20,48 @@ Common.LevelBase {
         anchors.centerIn: gameScene.gameWindowAnchorItem
     }
 
-//    TexturePackerAnimatedSprite {
-//      id: flowerimg
-//      x:13
-//      y:90
-//      width: 40
-//      height: 40
-//      running: true
-//      source: "../../assets/flower/flower.json"
-//      frameNames: ["flower1.png", "flower2.png", "flower3.png", "flower4.png", "flower5.png", "flower6.png", "flower7.png", "flower8.png", "flower9.png", "flower10.png"]
-////      anchors.fill: parent
-//      frameRate: 5
-//    }
+    Timer{
+        id:dieimgstart
+        interval: 1
+        repeat: false
+
+        onTriggered: {
+            playerdie.source = "../../assets/player/playerdie.json"
+            dieimgdelete.start()
+        }
+    }
+    Timer{
+        id:dieimgdelete
+        interval: 3000
+        repeat: false
+
+        onTriggered: {
+            playerdie.source = ""
+        }
+    }
+
+    TexturePackerAnimatedSprite{
+        id: playerdie
+        x:player.x
+        y:player.y
+        width: 17
+        height: 17
+        running: true
+        loops: 0
+        source: ""
+        frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
+        interpolate: false
+        frameRate: 3
+    }
 
     Player{
         id:player
         x:20
         y:100
+
+        onDieimg1:{
+            dieimgstart.start()
+        }
     }
 
     Wall {height:parent.height; anchors.right:parent.left}
@@ -130,13 +154,8 @@ Common.LevelBase {
         column: 0
         size: 1
     }
-    Obstacle1{
+    Teddy{
         row: 15
-        column: 0
-        size: 1
-    }
-    Obstacle1{
-        row: 16
         column: 0
         size: 1
     }
@@ -212,16 +231,6 @@ Common.LevelBase {
         column: 1
         size: 1
     }
-    Obstacle2{
-        row: 15
-        column: 1
-        size: 1
-    }
-    Obstacle4{
-        row: 16
-        column: 1
-        size: 1
-    }
     Obstacle1{
         row: 17
         column: 1
@@ -289,7 +298,7 @@ Common.LevelBase {
         column: 2
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 12
         column: 2
         size: 1
@@ -336,7 +345,7 @@ Common.LevelBase {
         column: 3
         size: 1
     }
-    Obstacle4{
+    Obstacle2{
         row: 4
         column: 3
         size: 1
@@ -356,7 +365,7 @@ Common.LevelBase {
         column: 3
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 11
         column: 3
         size: 1
@@ -520,17 +529,12 @@ Common.LevelBase {
         column: 5
         size: 1
     }
-    Obstacle1{
+    Teddy{
         row: 7
         column: 5
         size: 1
     }
-    Obstacle1{
-        row: 8
-        column: 5
-        size: 1
-    }
-    Obstacle2{
+    Obstacle5{
         row: 9
         column: 5
         size: 1
@@ -575,7 +579,7 @@ Common.LevelBase {
         column: 5
         size: 1
     }
-    Obstacle5{
+    Obstacle4{
         row: 21
         column: 5
         size: 1
@@ -597,7 +601,7 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Obstacle4{
+    Obstacle5{
         row: 2
         column: 6
         size: 1
@@ -617,22 +621,12 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Obstacle1{
-        row: 7
-        column: 6
-        size: 1
-    }
-    Obstacle1{
-        row: 8
-        column: 6
-        size: 1
-    }
     Obstacle3{
         row: 11
         column: 6
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 12
         column: 6
         size: 1
@@ -642,7 +636,7 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 15
         column: 6
         size: 1
@@ -657,7 +651,7 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Obstacle4{
+    Obstacle5{
         row: 20
         column: 6
         size: 1
@@ -679,7 +673,7 @@ Common.LevelBase {
         column: 7
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 4
         column: 7
         size: 1
@@ -719,7 +713,7 @@ Common.LevelBase {
         column: 7
         size: 1
     }
-    Obstacle5{
+    Obstacle2{
         row: 20
         column: 7
         size: 1
@@ -756,7 +750,7 @@ Common.LevelBase {
         column: 8
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 4
         column: 8
         size: 1
@@ -771,7 +765,7 @@ Common.LevelBase {
         column: 8
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 8
         column: 8
         size: 1
@@ -796,12 +790,12 @@ Common.LevelBase {
         column: 8
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 13
         column: 8
         size: 1
     }
-    Obstacle4{
+    Obstacle5{
         row: 15
         column: 8
         size: 1
@@ -828,7 +822,7 @@ Common.LevelBase {
         column: 9
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 6
         column: 9
         size: 1
@@ -863,16 +857,21 @@ Common.LevelBase {
         column: 9
         size: 1
     }
-    Obstacle1{
+    Teddy{
         row: 20
         column: 9
         size: 1
     }
-    Obstacle1{
-        row: 21
-        column: 9
-        size: 1
-    }
+//    Obstacle1{
+//        row: 20
+//        column: 9
+//        size: 1
+//    }
+//    Obstacle1{
+//        row: 21
+//        column: 9
+//        size: 1
+//    }
     Obstacle1{
         row: 22
         column: 9
@@ -895,7 +894,7 @@ Common.LevelBase {
         column: 10
         size: 1
     }
-    Obstacle5{
+    Obstacle2{
         row: 6
         column: 10
         size: 1
@@ -946,16 +945,6 @@ Common.LevelBase {
         size: 1
     }
     Obstacle1{
-        row: 20
-        column: 10
-        size: 1
-    }
-    Obstacle1{
-        row: 21
-        column: 10
-        size: 1
-    }
-    Obstacle1{
         row: 22
         column: 10
         size: 1
@@ -977,7 +966,7 @@ Common.LevelBase {
         column: 11
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 6
         column: 11
         size: 1
@@ -1002,7 +991,7 @@ Common.LevelBase {
         column: 11
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 18
         column: 11
         size: 1
@@ -1034,18 +1023,13 @@ Common.LevelBase {
         column: 12
         size: 1
     }
-    Obstacle1{
+    Obstacle5{
         row: 10
         column: 12
         size: 1
     }
-    Obstacle1{
+    Teddy{
         row: 11
-        column: 12
-        size: 1
-    }
-    Obstacle4{
-        row: 12
         column: 12
         size: 1
     }
@@ -1141,22 +1125,12 @@ Common.LevelBase {
         column: 13
         size: 1
     }
-    Obstacle1{
+    Obstacle5{
         row: 10
         column: 13
         size: 1
     }
-    Obstacle1{
-        row: 11
-        column: 13
-        size: 1
-    }
     Obstacle5{
-        row: 12
-        column: 13
-        size: 1
-    }
-    Obstacle1{
         row: 13
         column: 13
         size: 1
@@ -1223,7 +1197,7 @@ Common.LevelBase {
         column: 14
         size: 1
     }
-    Obstacle4{
+    Obstacle5{
         row: 16
         column: 14
         size: 1
@@ -1233,7 +1207,7 @@ Common.LevelBase {
         column: 14
         size: 1
     }
-    Obstacle5{
+    Obstacle2{
         row: 20
         column: 14
         size: 1
@@ -1286,4 +1260,3 @@ Common.LevelBase {
         size: 1
     }
 }
-

@@ -9,7 +9,15 @@ GameWindow {
 
     // create and remove entities at runtime
     EntityManager {
-        id: entityManager
+      id: entityManager
+      entityContainer: gameScene
+      dynamicCreationEntityList: [
+          Qt.resolvedUrl("entities/Boom.qml"),
+          Qt.resolvedUrl("entities/Fire.qml"),
+          Qt.resolvedUrl("entities/Fire1.qml"),
+          Qt.resolvedUrl("entities/Fire2.qml"),
+          Qt.resolvedUrl("entities/Fire3.qml")
+      ]
     }
     FontLoader {
       id: gameFont
@@ -56,6 +64,9 @@ GameWindow {
             window.state = "game"
         }
         onBackButtonPressed:{
+//            var toRemoveEntityTypes1 = ["boom", "fire", "fire1", "fire2", "fire3"]
+//            entityManager.removeEntitiesByFilter(toRemoveEntityTypes1)
+//            entityManager.removeAllEntities()
             window.state = "menu"
         }
     }

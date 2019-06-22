@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Felgo 3.0
 import "../entities"
 import "../common" as Common
+import "../entities/prop"
 
 Common.LevelBase {
     id:scene
@@ -146,7 +147,7 @@ Common.LevelBase {
         column: 2
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 4
         column: 2
         size: 1
@@ -248,13 +249,13 @@ Common.LevelBase {
         column: 3
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 11
         column: 3
         size: 1
     }
     Obstacle1{
-        row: 12
+        row: 13
         column: 3
         size: 1
     }
@@ -300,7 +301,7 @@ Common.LevelBase {
         column: 4
         size: 1
     }
-    Box{
+    Obstacle3{
         row: 6
         column: 4
         size: 1
@@ -315,18 +316,23 @@ Common.LevelBase {
         column: 4
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 10
         column: 4
         size: 1
     }
     Obstacle1{
-        row: 12
+        row: 11
         column: 4
         size: 1
     }
     Box{
-        row: 14
+        row: 12
+        column: 4
+        size: 1
+    }
+    Obstacle5{
+        row: 13
         column: 4
         size: 1
     }
@@ -377,21 +383,21 @@ Common.LevelBase {
         column: 5
         size: 1
     }
-    Obstacle2{
+    Box{
         row: 9
         column: 5
         size: 1
     }
-    Obstacle1{
-        row: 12
-        column: 5
-        size: 1
-    }
-    Obstacle1{
-        row: 13
-        column: 5
-        size: 1
-    }
+//    Obstacle1{
+//        row: 12
+//        column: 5
+//        size: 1
+//    }
+//    Obstacle1{
+//        row: 13
+//        column: 5
+//        size: 1
+//    }
     Obstacle1{
         row: 15
         column: 5
@@ -439,26 +445,32 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Box{
+    Obstacle5{
         row: 8
         column: 6
         size: 1
     }
-    Obstacle1{
-        row: 11
+    Castle{
+        row: 10
         column: 6
         size: 1
+        z:10
     }
-    Obstacle2{
-        row: 12
-        column: 6
-        size: 1
-    }
-    Obstacle2{
-        row: 13
-        column: 6
-        size: 1
-    }
+//    Obstacle1{
+//        row: 11
+//        column: 6
+//        size: 1
+//    }
+//    Obstacle2{
+//        row: 12
+//        column: 6
+//        size: 1
+//    }
+//    Obstacle2{
+//        row: 13
+//        column: 6
+//        size: 1
+//    }
     Obstacle3{
         row: 15
         column: 6
@@ -491,16 +503,21 @@ Common.LevelBase {
         column: 7
         size: 1
     }
-    Obstacle1{
-        row: 9
+    Cake{
+        row:7
         column: 7
         size: 1
     }
-    Obstacle3{
-        row: 13
+    Box{
+        row: 8
         column: 7
         size: 1
     }
+//    Obstacle3{
+//        row: 13
+//        column: 7
+//        size: 1
+//    }
     Obstacle1{
         row: 15
         column: 7
@@ -516,7 +533,7 @@ Common.LevelBase {
         column: 7
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 20
         column: 7
         size: 1
@@ -563,33 +580,8 @@ Common.LevelBase {
         column: 8
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 8
-        column: 8
-        size: 1
-    }
-    Obstacle1{
-        row: 9
-        column: 8
-        size: 1
-    }
-    Obstacle1{
-        row: 10
-        column: 8
-        size: 1
-    }
-    Obstacle1{
-        row: 11
-        column: 8
-        size: 1
-    }
-    Obstacle1{
-        row: 12
-        column: 8
-        size: 1
-    }
-    Obstacle2{
-        row: 13
         column: 8
         size: 1
     }
@@ -635,11 +627,11 @@ Common.LevelBase {
         column: 9
         size: 1
     }
-    Obstacle1{
-        row: 13
-        column: 9
-        size: 1
-    }
+//    Obstacle1{
+//        row: 13
+//        column: 9
+//        size: 1
+//    }
     Obstacle1{
         row: 15
         column: 9
@@ -677,7 +669,7 @@ Common.LevelBase {
         column: 10
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 6
         column: 10
         size: 1
@@ -687,36 +679,36 @@ Common.LevelBase {
         column: 10
         size: 1
     }
-    Obstacle3{
+    Obstacle1{
         row: 8
         column: 10
         size: 1
     }
-    Obstacle1{
-        row: 9
-        column: 10
-        size: 1
-    }
-    Obstacle1{
-        row: 10
-        column: 10
-        size: 1
-    }
-    Obstacle1{
-        row: 11
-        column: 10
-        size: 1
-    }
-    Obstacle3{
-        row: 12
-        column: 10
-        size: 1
-    }
-    Obstacle1{
-        row: 13
-        column: 10
-        size: 1
-    }
+//    Obstacle1{
+//        row: 9
+//        column: 10
+//        size: 1
+//    }
+//    Obstacle1{
+//        row: 10
+//        column: 10
+//        size: 1
+//    }
+//    Obstacle1{
+//        row: 11
+//        column: 10
+//        size: 1
+//    }
+//    Obstacle3{
+//        row: 12
+//        column: 10
+//        size: 1
+//    }
+//    Obstacle1{
+//        row: 13
+//        column: 10
+//        size: 1
+//    }
     Obstacle1{
         row: 15
         column: 10
@@ -749,7 +741,7 @@ Common.LevelBase {
         column: 11
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 6
         column: 11
         size: 1
@@ -764,7 +756,17 @@ Common.LevelBase {
         column: 11
         size: 1
     }
-    Obstacle2{
+    Obstacle1{
+        row: 12
+        column: 11
+        size: 1
+    }
+    Obstacle1{
+        row: 14
+        column: 11
+        size: 1
+    }
+    Obstacle4{
         row: 15
         column: 11
         size: 1
@@ -784,7 +786,7 @@ Common.LevelBase {
         column: 11
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 23
         column: 11
         size: 1
@@ -821,13 +823,8 @@ Common.LevelBase {
         column: 12
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 12
-        column: 12
-        size: 1
-    }
-    Obstacle1{
-        row: 13
         column: 12
         size: 1
     }
@@ -851,7 +848,7 @@ Common.LevelBase {
         column: 12
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 21
         column: 12
         size: 1
@@ -1038,5 +1035,4 @@ Common.LevelBase {
         size: 1
     }
 }
-
 

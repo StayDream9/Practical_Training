@@ -6,7 +6,7 @@ EntityBase {
     entityType: "fire1"
     width: 15;height: 15
 
-    signal playerdie()
+    signal die()
 
     MultiResolutionImage {
         id: fireimage1
@@ -66,12 +66,14 @@ EntityBase {
 
             removeEntity()
           }
-          if(collidedEntity.entityType === "player"){
-              collidedEntity.removeEntity()
-              // remove the monster
-              removeEntity()
-              fire1.playerdie()
-          }
+//          if(collidedEntity.entityType === "player"){
+////              playerdie.running = true
+
+//              collidedEntity.removeEntity()
+////               remove the monster
+//              removeEntity()
+//              fire.die()
+//          }
         }
     }
 }

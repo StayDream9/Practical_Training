@@ -5,9 +5,11 @@ import Felgo 3.0
 EntityBase {
     id:fire
     entityType: "fire"
+//    entityId: "fire"
     width: 15;height: 15
+    poolingEnabled : true
 
-    signal playerdie()
+    signal die()
 
     MultiResolutionImage {
         id: fireimage
@@ -71,12 +73,14 @@ EntityBase {
 
             removeEntity()
           }
-          if(collidedEntity.entityType === "player"){
-              collidedEntity.removeEntity()
-              // remove the monster
-              removeEntity()
-              fire.playerdie()
-          }
+//          if(collidedEntity.entityType === "player"){
+////              playerdie.running = true
+
+//              collidedEntity.removeEntity()
+//              // remove the monster
+//              removeEntity()
+//              fire.die()
+//          }
         }
       }// BoxCollider
 }

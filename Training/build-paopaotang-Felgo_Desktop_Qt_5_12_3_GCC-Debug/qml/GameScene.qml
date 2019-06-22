@@ -47,17 +47,6 @@ Scene {
         }
     }
 
-    EntityManager {
-      id: entityManager
-      entityContainer: gameScene
-      dynamicCreationEntityList: [
-          Qt.resolvedUrl("entities/Boom.qml"),
-          Qt.resolvedUrl("entities/Fire.qml"),
-          Qt.resolvedUrl("entities/Fire1.qml"),
-          Qt.resolvedUrl("entities/Fire2.qml"),
-          Qt.resolvedUrl("entities/Fire3.qml")
-      ]
-    }
 
     Item {
         id: viewPort
