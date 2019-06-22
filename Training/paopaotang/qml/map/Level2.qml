@@ -22,18 +22,6 @@ Common.LevelBase {
         y:100
     }
 
-//    ResetSensor {
-//      height: 10
-//      x: player.x
-//      anchors.bottom: bottom.bottom
-//      // if the player collides with the reset sensor, he goes back to the start
-//      onContact: {
-//        player.x = 20
-//        player.y = 100
-//      }
-//    }
-
-
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall
     Wall {height:parent.height; anchors.left:parent.right}

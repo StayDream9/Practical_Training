@@ -82,7 +82,8 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/Control.qml \
 		../paopaotang/qml/common/LevelBase.qml \
 		../paopaotang/qml/entities/Cake.qml \
-		../paopaotang/qml/entities/ResetSensor.qml \
+		../paopaotang/qml/entities/Obstacle4.qml \
+		../paopaotang/qml/entities/Obstacle5.qml \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/unix.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/linux.conf \

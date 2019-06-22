@@ -1,21 +1,23 @@
 import QtQuick 2.0
 import Felgo 3.0
 
-//红房子障碍物
+//黄房子障碍物
 EntityBase{
-    id:obstacle2
-    entityType: "obstacle2"
+    id:obstacle5
+    entityType: "obstacle5"
+
+    property int rand
 
     MultiResolutionImage{
-        id: redhouseimg
+        id: yellowhouseimg
         height: 20
         width: 20
 
-        source: "../../assets/wall/redhouse.png"
+        source: "../../assets/wall/yellowhouse.png"
     }
 
     CircleCollider{
-        radius: redhouseimg.width/2
+        radius: yellowhouseimg.width/2
         anchors.centerIn: parent
         bodyType: Body.Static
 

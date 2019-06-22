@@ -20,7 +20,7 @@ EntityBase{
     }
     Timer{
         id:removeT
-        interval: 4500
+        interval: 3000
         running: true
         repeat: false
         onTriggered: {

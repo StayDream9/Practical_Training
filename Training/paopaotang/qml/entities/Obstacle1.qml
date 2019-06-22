@@ -23,7 +23,6 @@ EntityBase{
 
         //碰撞检测
         fixture.onBeginContact: {
-
           // if the collided type was a projectile, both can be destroyed and the player gets a point
           var collidedEntity = other.getBody().target
           console.debug("collided with entity", collidedEntity.entityType)

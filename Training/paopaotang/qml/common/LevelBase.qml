@@ -6,8 +6,6 @@ import "../entities"
 Item{
     id: levelBaseScene
 
-    property alias boom: boom
-    property alias fire: fire
     property int column: 0
     property int row: 0
     property int size // gets set in Platform.qml and Ground.qml
@@ -30,34 +28,6 @@ Item{
 
     function resetLevel(){
         activeLevelFileName = ""
-    }
-
-//    Box{
-
-//    }
-
-    Fire{
-        id:fire
-
-    }
-
-    Boom{
-        id: boom
-    }
-
-    Obstacle1{
-
-    }
-
-    Obstacle2{
-
-    }
-    Obstacle3{
-
-    }
-
-    Wall{
-
     }
 
 }

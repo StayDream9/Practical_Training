@@ -18,7 +18,7 @@ EntityBase {
 
     Timer{
         id:removeF
-        interval: 2500
+        interval: 500
         running: true
         repeat: false
         onTriggered: {
@@ -70,7 +70,7 @@ EntityBase {
               collidedEntity.removeEntity()
               // remove the monster
               removeEntity()
-              playerdie()
+              fire.playerdie()
           }
         }
       }// BoxCollider

@@ -65,6 +65,14 @@ Scene {
         }
     }
 
+//    Player{
+//        id:player
+//        x:20
+//        y:100
+//    }
+
+    property var boompoint;
+
     Rectangle{
         color: "red"
         width:50
@@ -83,10 +91,10 @@ Scene {
                      x: activeLevel.player.x,
                      y: activeLevel.player.y
                 }
-                people=newEntityProperties
+                boompoint=newEntityProperties
                 entityManager.createEntityFromUrlWithProperties(
                             Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
-                shot.start()
+                shotT.start()
 
                 event.accepted = true;
             }
@@ -196,7 +204,7 @@ Scene {
     }
 
 
-    property var boompoint;
+
 
     Keys.onPressed: {
               if (event.key === Qt.Key_Space) {
@@ -210,20 +218,41 @@ Scene {
                   boompoint=newEntityProperties
                   entityManager.createEntityFromUrlWithProperties(
                               Qt.resolvedUrl("entities/Boom.qml"),newEntityProperties);
-                  shot.start()
+                  shotT.start()
 
                   event.accepted = true;
               }
           }
 
+    Timer{
+        id:stopshotT
+        interval: 1000
+        repeat: false
+
+        onTriggered: {
+            keepfireT.stop()
+        }
+    }
 
     Timer{
-        id:shot
-        interval: 3000
+        id:keepfireT
+        interval: 120
+        repeat: true
+
+        onTriggered: {
+            fire()
+        }
+    }
+
+    Timer{
+        id:shotT
+        interval: 2000
         repeat: false
 
         onTriggered: {
             fire()
+            keepfireT.start()
+            stopshotT.start()
         }
     }
 
@@ -232,22 +261,22 @@ Scene {
             console.debug(boompoint.x,boompoint.y)
         var destination = Qt.point(boompoint.x+44, boompoint.y+2)
         var initpoint = Qt.point(boompoint.x+4, boompoint.y+2)
-        var realMoveDuration = 1000
+        var realMoveDuration = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
         //火焰向左
         var destination1 = Qt.point(boompoint.x-44, boompoint.y+2)
         var initpoint1 = Qt.point(boompoint.x+4, boompoint.y+2)
-        var realMoveDuration1 = 1000
+        var realMoveDuration1 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire1.qml"), {"initpoint": initpoint1,"destination": destination1, "moveDuration": realMoveDuration1})
         //火焰向上
         var destination2 = Qt.point(boompoint.x+2, boompoint.y-44)
         var initpoint2 = Qt.point(boompoint.x+2, boompoint.y+4)
-        var realMoveDuration2 = 1000
+        var realMoveDuration2 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire2.qml"), {"initpoint": initpoint2,"destination": destination2, "moveDuration": realMoveDuration2})
         //火焰向下
         var destination3 = Qt.point(boompoint.x+2, boompoint.y+44)
         var initpoint3 = Qt.point(boompoint.x+2, boompoint.y+4)
-        var realMoveDuration3 = 1000
+        var realMoveDuration3 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
     }
 

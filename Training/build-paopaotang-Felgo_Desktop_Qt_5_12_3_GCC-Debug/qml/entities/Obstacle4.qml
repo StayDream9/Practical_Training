@@ -1,21 +1,21 @@
 import QtQuick 2.0
 import Felgo 3.0
 
-//红房子障碍物
+//蓝房子障碍物
 EntityBase{
-    id:obstacle2
-    entityType: "obstacle2"
+    id:obstacle4
+    entityType: "obstacle4"
 
     MultiResolutionImage{
-        id: redhouseimg
+        id: bluehouseimg
         height: 20
         width: 20
 
-        source: "../../assets/wall/redhouse.png"
+        source: "../../assets/wall/bluehouse.png"
     }
 
     CircleCollider{
-        radius: redhouseimg.width/2
+        radius: bluehouseimg.width/2
         anchors.centerIn: parent
         bodyType: Body.Static
 
@@ -33,7 +33,6 @@ EntityBase{
                 // remove the projectile entity
                 collidedEntity.removeEntity()
                 // remove the monster
-                //                removeEntity()
             }
         }
     }

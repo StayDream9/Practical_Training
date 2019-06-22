@@ -16,7 +16,7 @@ EntityBase {
 
     Timer{
         id:removeF2
-        interval: 2500
+        interval: 500
         running: true
         repeat: false
         onTriggered: {
@@ -45,7 +45,6 @@ EntityBase {
         width: 10
         height: 10
         anchors.centerIn: parent
-//        anchors.fill: fireimage2
         collisionTestingOnlyMode: true
 
         categories: Box.Category6
@@ -53,8 +52,6 @@ EntityBase {
 
         //碰撞检测
         fixture.onBeginContact: {
-
-          // if the collided type was a projectile, both can be destroyed and the player gets a point
           var collidedEntity = other.getBody().target
           console.debug("collided with entity", collidedEntity.entityType)
           // monsters could also collide with other monsters because they have a random speed - alternatively, collider categories could be used
@@ -69,7 +66,7 @@ EntityBase {
               collidedEntity.removeEntity()
               // remove the monster
               removeEntity()
-              playerdie()
+              fire2.playerdie()
           }
         }
     }

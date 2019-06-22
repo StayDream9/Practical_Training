@@ -7,7 +7,7 @@ EntityBase{
 
     MultiResolutionImage{
         id:boximg
-        height: 20
+        height: 20;
         width: 20
         source: "../../assets/wall/box.png"
     }

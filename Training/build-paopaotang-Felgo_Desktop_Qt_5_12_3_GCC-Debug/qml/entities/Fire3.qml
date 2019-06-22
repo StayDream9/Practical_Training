@@ -16,7 +16,7 @@ EntityBase {
 
     Timer{
         id:removeF3
-        interval: 2500
+        interval: 500
         running: true
         repeat: false
         onTriggered: {
@@ -51,7 +51,6 @@ EntityBase {
 
         //碰撞检测
         fixture.onBeginContact: {
-
           // if the collided type was a projectile, both can be destroyed and the player gets a point
           var collidedEntity = other.getBody().target
           console.debug("collided with entity", collidedEntity.entityType)
@@ -64,10 +63,10 @@ EntityBase {
             removeEntity()
           }
           if(collidedEntity.entityType === "player"){
-              collidedEntity.removeEntity()
+//              collidedEntity.removeEntity()
               // remove the monster
               removeEntity()
-              playerdie()
+              fir3.playerdie()
           }
         }
     }

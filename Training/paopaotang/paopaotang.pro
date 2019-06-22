@@ -87,4 +87,5 @@ DISTFILES += \
     qml/Control.qml \
     qml/common/LevelBase.qml \
     qml/entities/Cake.qml \
-    qml/entities/ResetSensor.qml
+    qml/entities/Obstacle4.qml \
+    qml/entities/Obstacle5.qml

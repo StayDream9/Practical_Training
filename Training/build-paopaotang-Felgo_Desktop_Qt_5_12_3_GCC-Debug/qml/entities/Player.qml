@@ -7,6 +7,8 @@ EntityBase {
     width: 20
     height: 20
 
+    signal contact
+
     property alias collider: collider
     property alias horizontalVelocity: collider.linearVelocity.x
     property alias verticalVelocity: collider.linearVelocity.y
@@ -27,8 +29,7 @@ EntityBase {
     CircleCollider {
         id: collider
         radius: player.width/2-1
-//        height: 17
-//        width: 17
+
         anchors.centerIn: parent
         anchors.horizontalCenter: parent.horizontalCenter
         // this collider must be dynamic because we are moving it by applying forces and impulses
@@ -38,7 +39,6 @@ EntityBase {
         sleepingAllowed: false
         // apply the horizontal value of the TwoAxisController as force to move the player left and right
         force: Qt.point(controller.xAxis*30*32,-controller.yAxis*30*32)
-
 
         categories: Box.Category1
         collidesWith: Box.Category1 /*| Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7*/

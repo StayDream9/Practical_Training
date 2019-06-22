@@ -20,37 +20,11 @@ Common.LevelBase {
     }
 
 
-
     Player{
         id:player
         x:20
         y:100
-
     }
-
-//    Fire1{
-////        width: player.width
-//        onContact: {
-//            player.x = 20
-//            player.y = 100
-//        }
-//    }
-
-//    ResetSensor {
-//      width: player.width
-//      height: 10
-//      x: player.x
-//      anchors.bottom: viewPort.bottom
-//      // if the player collides with the reset sensor, he goes back to the start
-//      onContact: {
-////        player.x = 20
-////            ratio : Qt.point(0,0)
-//        psb.running = false
-//          player.x = playerx-30
-//        player.y = 100
-//          psb.running = true
-//      }
-
 
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall
@@ -167,7 +141,7 @@ Common.LevelBase {
         column: 1
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 4
         column: 1
         size: 1
@@ -217,7 +191,7 @@ Common.LevelBase {
         column: 1
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 16
         column: 1
         size: 1
@@ -264,7 +238,7 @@ Common.LevelBase {
         column: 2
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 4
         column: 2
         size: 1
@@ -336,7 +310,7 @@ Common.LevelBase {
         column: 3
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 4
         column: 3
         size: 1
@@ -428,7 +402,7 @@ Common.LevelBase {
         column: 4
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 6
         column: 4
         size: 1
@@ -448,7 +422,7 @@ Common.LevelBase {
         column: 4
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 10
         column: 4
         size: 1
@@ -535,7 +509,7 @@ Common.LevelBase {
         column: 5
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 10
         column: 5
         size: 1
@@ -575,7 +549,7 @@ Common.LevelBase {
         column: 5
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 21
         column: 5
         size: 1
@@ -597,7 +571,7 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 2
         column: 6
         size: 1
@@ -657,7 +631,7 @@ Common.LevelBase {
         column: 6
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 20
         column: 6
         size: 1
@@ -719,7 +693,7 @@ Common.LevelBase {
         column: 7
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 20
         column: 7
         size: 1
@@ -801,7 +775,7 @@ Common.LevelBase {
         column: 8
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 15
         column: 8
         size: 1
@@ -895,7 +869,7 @@ Common.LevelBase {
         column: 10
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 6
         column: 10
         size: 1
@@ -935,7 +909,7 @@ Common.LevelBase {
         column: 10
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 14
         column: 10
         size: 1
@@ -967,7 +941,7 @@ Common.LevelBase {
         column: 11
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 2
         column: 11
         size: 1
@@ -1044,7 +1018,7 @@ Common.LevelBase {
         column: 12
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 12
         column: 12
         size: 1
@@ -1084,7 +1058,7 @@ Common.LevelBase {
         column: 12
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 21
         column: 12
         size: 1
@@ -1136,7 +1110,7 @@ Common.LevelBase {
         column: 13
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 9
         column: 13
         size: 1
@@ -1151,7 +1125,7 @@ Common.LevelBase {
         column: 13
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 12
         column: 13
         size: 1
@@ -1223,7 +1197,7 @@ Common.LevelBase {
         column: 14
         size: 1
     }
-    Obstacle2{
+    Obstacle4{
         row: 16
         column: 14
         size: 1
@@ -1233,7 +1207,7 @@ Common.LevelBase {
         column: 14
         size: 1
     }
-    Obstacle2{
+    Obstacle5{
         row: 20
         column: 14
         size: 1

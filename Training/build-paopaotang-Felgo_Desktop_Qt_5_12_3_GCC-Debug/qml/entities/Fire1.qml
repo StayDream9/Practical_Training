@@ -7,7 +7,6 @@ EntityBase {
     width: 15;height: 15
 
     signal playerdie()
-    signal contact
 
     MultiResolutionImage {
         id: fireimage1
@@ -17,7 +16,7 @@ EntityBase {
 
     Timer{
         id:removeF1
-        interval: 2500
+        interval: 500
         running: true
         repeat: false
         onTriggered: {
@@ -43,20 +42,15 @@ EntityBase {
     }
 
     BoxCollider {
-//        width: 40
-//        height: 1
         width: 10
         height: 10
         anchors.centerIn: parent
-//        anchors.fill: fireimage1
         collisionTestingOnlyMode: true
 //    categories: Box.Category5
 //    collidesWith: Box.Category1 | Box.Category3 | Box.Category10
 
         //碰撞检测
         fixture.onBeginContact: {
-
-          // if the collided type was a projectile, both can be destroyed and the player gets a point
           var collidedEntity = other.getBody().target
           console.debug("collided with entity", collidedEntity.entityType)
           // monsters could also collide with other monsters because they have a random speed - alternatively, collider categories could be used
@@ -68,11 +62,10 @@ EntityBase {
             removeEntity()
           }
           if(collidedEntity.entityType === "player"){
-              collidedEntity.removeEntity()
+//              collidedEntity.removeEntity()
               // remove the monster
               removeEntity()
-              playerdie()
-              fire1.contact
+              fire1.playerdie()
           }
         }
     }
