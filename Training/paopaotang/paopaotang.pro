@@ -92,4 +92,6 @@ DISTFILES += \
     qml/entities/prop/Flower.qml \
     qml/entities/prop/Castle.qml \
     qml/entities/prop/Teddy.qml \
-    qml/entities/Monster.qml
+    qml/entities/Monster.qml \
+    qml/entities/Obstacle6.qml \
+    qml/entities/Obstacle7.qml

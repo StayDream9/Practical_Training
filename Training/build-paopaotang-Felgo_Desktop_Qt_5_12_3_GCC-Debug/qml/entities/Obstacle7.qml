@@ -1,10 +1,10 @@
 import QtQuick 2.0
 import Felgo 3.0
 
-//树障碍物
+//石头障碍物
 EntityBase{
-    id:obstacle1
-    entityType: "obstacle1"
+    id:obstacle7
+    entityType: "obstacle7"
 
     property int column: 0
     property int row: 0
@@ -16,14 +16,14 @@ EntityBase{
     height: gameScene.gridSize
 
     MultiResolutionImage{
-        id:treeimg
+        id:stoneimg
         height: 20
         width: 20
-        source: "../../assets/wall/tree.png"
+        source: ""
     }
 
     CircleCollider{
-        radius: treeimg.width/2
+        radius: stoneimg.width/2
         anchors.centerIn: parent
         bodyType: Body.Static
 

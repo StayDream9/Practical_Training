@@ -21,18 +21,18 @@ Common.LevelBase {
     }
 
     Timer{
-        id:dieimgstart
+        id:dieimgstartT
         interval: 1
         repeat: false
 
         onTriggered: {
             playerdie.source = "../../assets/player/playerdie.json"
-            dieimgdelete.start()
+            dieimgdeleteT.start()
         }
     }
     Timer{
-        id:dieimgdelete
-        interval: 3000
+        id:dieimgdeleteT
+        interval: 2000
         repeat: false
 
         onTriggered: {
@@ -51,7 +51,31 @@ Common.LevelBase {
         source: ""
         frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
         interpolate: false
-        frameRate: 3
+        frameRate: 5
+    }
+
+    property int currenttime: 0
+
+    Timer{
+        id:settimeT
+        interval: 1000
+        running: true
+        repeat: true
+
+        onTriggered: {
+            currenttime++
+            timetext = "time:\n   "+currenttime
+        }
+    }
+
+    Timer{
+        id:setscoreT
+        interval: 10
+        repeat: false
+
+        onTriggered: {
+            scoretext = "score:\n   "+gameScene.highscore
+        }
     }
 
     Player{
@@ -60,7 +84,10 @@ Common.LevelBase {
         y:100
 
         onDieimg1:{
-            dieimgstart.start()
+            dieimgstartT.start()
+        }
+        onEatcake: {
+            setscoreT.start()
         }
     }
 
@@ -77,13 +104,8 @@ Common.LevelBase {
 
 //地图
 //------------------------------------------
-    Flower{
-        row:3
-        column: 11
-        size:1
-    }
 
-    Cake{
+    Flower{
         row:0
         column: 10
         size:1

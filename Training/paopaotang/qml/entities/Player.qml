@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Felgo 3.0
+import "../"
 
 EntityBase {
     id: player
@@ -7,8 +8,9 @@ EntityBase {
     width: 20
     height: 20
 
-    signal contact
+//    signal contact
     signal dieimg1
+    signal eatcake
 
     property alias collider: collider
 //    property alias playerdie: playerdie
@@ -38,19 +40,6 @@ EntityBase {
         frameRate: 7
     }
 
-//    TexturePackerAnimatedSprite{
-//        id: playerdie
-//        width: 17
-//        height: 17
-//        running: true
-//        loops: 0
-//        source: ""
-//        frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
-//        interpolate: false
-//        anchors.fill: parent
-//        frameRate: 3
-//    }
-
     CircleCollider {
         id: collider
         radius: player.width/2-1
@@ -66,7 +55,7 @@ EntityBase {
         force: Qt.point(controller.xAxis*30*32,-controller.yAxis*30*32)
 
         categories: Circle.Category1
-        collidesWith: Circle.Category1 | Circle.Category3 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category8 | Circle.Category9 | Circle.Category10 | Circle.Category11 | Circle.Category12
+        collidesWith: Circle.Category1 | Circle.Category3 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category8 | Circle.Category9 | Circle.Category10 | Circle.Category11 | Circle.Category12 | Circle.Category13
 
         fixture.onBeginContact: {
             var collidedEntity = other.getBody().target
@@ -74,9 +63,13 @@ EntityBase {
             if(collidedEntity.entityType === "fire" || collidedEntity.entityType === "fire1" || collidedEntity.entityType === "fire2" || collidedEntity.entityType === "fire3") {
 //                dieimg.start();
                 dieimg1()
+                gameScene.gameover = true
                 collidedEntity.removeEntity()
                 // remove the monster
                 removeEntity()
+            }
+            if(collidedEntity.entityType === "cake"){
+                eatcake()
             }
         }
 

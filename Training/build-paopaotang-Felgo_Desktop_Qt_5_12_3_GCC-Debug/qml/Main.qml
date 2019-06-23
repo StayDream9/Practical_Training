@@ -3,7 +3,7 @@ import QtQuick 2.0
 import "menu"
 
 GameWindow {
-    id: window
+    id: gameWindow
     screenWidth: 960
     screenHeight: 640
 
@@ -29,9 +29,9 @@ GameWindow {
         id: menuScene
         // listen to the button signals of the scene and change the state according to it
         onSelectLevelPressed: {
-            window.state = "selectLevel"
+            gameWindow.state = "selectLevel"
         }
-        onCreditsPressed: window.state = "credits"
+        onCreditsPressed: gameWindow.state = "credits"
         // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
         onBackButtonPressed: {
 
@@ -43,7 +43,7 @@ GameWindow {
             target: nativeUtils
             onMessageBoxFinished: {
                 // only quit, if the activeScene is menuScene - the messageBox might also get opened from other scenes in your code
-                if(accepted && window.activeScene === menuScene)
+                if(accepted && gameWindow.activeScene === menuScene)
                     Qt.quit()
             }
         }
@@ -61,20 +61,20 @@ GameWindow {
             gameScene.shootRect.opacity = 0.5
             gameScene.centerRect.opacity = 0.5
             gameScene.setLevel(selectedLevel)
-            window.state = "game"
+            gameWindow.state = "game"
         }
         onBackButtonPressed:{
 //            var toRemoveEntityTypes1 = ["boom", "fire", "fire1", "fire2", "fire3"]
 //            entityManager.removeEntitiesByFilter(toRemoveEntityTypes1)
 //            entityManager.removeAllEntities()
-            window.state = "menu"
+            gameWindow.state = "menu"
         }
     }
 
     // credits scene
     CreditsScene {
         id: creditsScene
-        onBackButtonPressed: window.state = "menu"
+        onBackButtonPressed: gameWindow.state = "menu"
     }
 
     // game scene to play a level
@@ -88,7 +88,7 @@ GameWindow {
             gameScene.shootRect.opacity = 0
             gameScene.centerRect.opacity = 0
 
-            window.state = "selectLevel"
+            gameWindow.state = "selectLevel"
         }
     }
 
@@ -101,22 +101,22 @@ GameWindow {
         State {
             name: "menu"
             PropertyChanges {target: menuScene; opacity: 1}
-            PropertyChanges {target: window; activeScene: menuScene}
+            PropertyChanges {target: gameWindow; activeScene: menuScene}
         },
         State {
             name: "selectLevel"
             PropertyChanges {target: selectLevelScene; opacity: 1}
-            PropertyChanges {target: window; activeScene: selectLevelScene}
+            PropertyChanges {target: gameWindow; activeScene: selectLevelScene}
         },
         State {
             name: "credits"
             PropertyChanges {target: creditsScene; opacity: 1}
-            PropertyChanges {target: window; activeScene: creditsScene}
+            PropertyChanges {target: gameWindow; activeScene: creditsScene}
         },
         State {
             name: "game"
             PropertyChanges {target: gameScene; opacity: 1}
-            PropertyChanges {target: window; activeScene: gameScene}
+            PropertyChanges {target: gameWindow; activeScene: gameScene}
         }
     ]
 }

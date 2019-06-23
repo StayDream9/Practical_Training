@@ -2,14 +2,14 @@ import QtQuick 2.0
 import Felgo 3.0
 
 EntityBase{
-    id:box
-    entityType: "box"
+    id:monster
+    entityType: "monster"
 
     MultiResolutionImage{
         id:boximg
         height: 20;
         width: 20
-        source: "../../assets/wall/box.png"
+        source: ""
     }
     CircleCollider{
         radius: boximg.width/2

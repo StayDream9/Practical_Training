@@ -17,10 +17,48 @@ Common.LevelBase {
       anchors.centerIn: gameScene.gameWindowAnchorItem
     }
 
+    Timer{
+        id:dieimgstart
+        interval: 1
+        repeat: false
+
+        onTriggered: {
+            playerdie.source = "../../assets/player/playerdie.json"
+            dieimgdelete.start()
+        }
+    }
+    Timer{
+        id:dieimgdelete
+        interval: 2000
+        repeat: false
+
+        onTriggered: {
+            playerdie.source = ""
+        }
+    }
+
+    TexturePackerAnimatedSprite{
+        id: playerdie
+        x:player.x
+        y:player.y
+        width: 17
+        height: 17
+        running: true
+        loops: 0
+        source: ""
+        frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
+        interpolate: false
+        frameRate: 5
+    }
+
     Player{
         id:player
         x:20
         y:100
+
+        onDieimg1:{
+            dieimgstart.start()
+        }
     }
 
 

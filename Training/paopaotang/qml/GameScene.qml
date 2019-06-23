@@ -10,21 +10,27 @@ Scene {
     height: 320
     gridSize: 20
 
+    property bool gameover: false
+    property bool gamewin: false
+    property int cakenum: 5
+    property int highscore: 0
+//    property int score: 0
+
     property alias rightRect: rightRect
     property alias leftRect: leftRect
     property alias buttomRect: buttomRect
     property alias topRect: topRect
     property alias shootRect: shootRect
     property alias centerRect: centerRect
-//    signal shooted()
     property alias gameScene: gameScene
     // the filename of the current level gets stored here, it is used for loading the
     property string activeLevelFileName
     // the currently loaded level gets stored here
     property variant activeLevel
-    property int countdown: 0
+
+//    property int countdown: 0
     // flag indicating if game is running
-    property bool gameRunning: countdown == 0
+//    property bool gameRunning: countdown == 0
 
     //设置当前关卡的名字
     function setLevel(fileName) {
@@ -43,7 +49,7 @@ Scene {
             // store the loaded level as activeLevel for easier access
             activeLevel = item
             // restarts the countdown
-            countdown = 3
+//            countdown = 3
         }
     }
 
@@ -60,8 +66,42 @@ Scene {
         }
     }
 
+    Timer{
+        id: checkpropT
+        interval: 100
+        repeat: true
+
+        onTriggered: {
+            checkdie()
+            checkprop()
+        }
+    }
+
+    function checkdie(){
+        if(gameover == true){
+            var toRemoveEntityTypes = ["box", "monster", "cake", "flower"]
+            entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
+        }
+    }
+    function checkprop(){
+            if(cakenum == 0){
+                gamewin = true
+                var toRemoveEntityTypes = ["box", "monster"]
+                entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
+            }
+    }
+
+
     property var boompoint;
 
+//-------------------------
+
+
+//-------------------------
+
+//控制
+//-------------------------
+    //射击
     Rectangle{
         id: shootRect
         radius: 45
@@ -223,7 +263,7 @@ Scene {
             onReleased: controller.yAxis = 0
         }
     }
-
+//------------------------------------
 
     //转方向时切换图片
     Keys.forwardTo: controller
