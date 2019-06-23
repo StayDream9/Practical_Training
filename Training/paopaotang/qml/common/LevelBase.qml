@@ -6,12 +6,99 @@ import "../"
 Item{
     id: levelBaseScene
 
-    property alias timetext: timetext.text
-    property alias scoretext: scoretext.text
+//    property alias timetext: timetext.text
+//    property alias scoretext: scoretext.text
+    property alias player: player
+
+//    signal gameover
 
     property int column: 0
     property int row: 0
     property int size // gets set in Platform.qml and Ground.qml
+
+    Timer{
+        id:dieimgstartT
+        interval: 1
+        repeat: false
+
+        onTriggered: {
+            playerdie.source = "../../assets/player/playerdie.json"
+            dieimgdeleteT.start()
+        }
+    }
+    Timer{
+        id:dieimgdeleteT
+        interval: 2000
+        repeat: false
+
+        onTriggered: {
+            playerdie.source = ""
+        }
+    }
+
+    TexturePackerAnimatedSprite{
+        id: playerdie
+        x:player.x
+        y:player.y
+        z:3
+        width: 17
+        height: 17
+        running: true
+        loops: 0
+        source: ""
+        frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
+        interpolate: false
+        frameRate: 5
+    }
+
+    property int currenttime: 0
+
+    Timer{
+        id:settimeT
+        interval: 1000
+        running: true
+        repeat: true
+
+        onTriggered: {
+            currenttime++
+            timetext.text = "time:\n  "+currenttime
+        }
+    }
+
+    Timer{
+        id:setscoreT
+        interval: 10
+        repeat: false
+
+        onTriggered: {
+            scoretext.text = "score:\n   "+gameScene.highscore
+            if(gameScene.highscore === 250)
+                settimeT.stop()
+        }
+    }
+
+
+    Player{
+        id:player
+        x:20
+        y:100
+        z:3
+
+        onDieimg1:{
+            dieimgstartT.start()
+        }
+        onEatcake: {
+            setscoreT.start()
+        }
+        onPlayerdie: {
+            settimeT.stop()
+            gameScene.gameover = true
+            settimeT.running = false
+            if(gameWindow.state === "gameover")
+                return
+            gameWindow.state = "gameover"
+        }
+    }
 
     Rectangle{
         id:showtime
@@ -28,8 +115,8 @@ Item{
             width: parent.width
             height: parent.height/4
             font.family: gameFont.name
-            text: "time:\n   0"
-            font.pixelSize: 18
+            text: "time:\n  0"
+            font.pixelSize: 16
         }
     }
     Rectangle{
@@ -48,7 +135,7 @@ Item{
             height: parent.height/4
             font.family: gameFont.name
             text: "score:\n   0"
-            font.pixelSize: 18
+            font.pixelSize: 16
         }
     }
 

@@ -11,7 +11,9 @@ Common.LevelBase {
 
     height: gameScene.gridSize * 16
     width: 42 * gameScene.gridSize
-    property alias player: player
+//    property alias player: player
+
+//    signal gameover
 
     MultiResolutionImage {
         width: 480
@@ -20,76 +22,82 @@ Common.LevelBase {
         anchors.centerIn: gameScene.gameWindowAnchorItem
     }
 
-    Timer{
-        id:dieimgstartT
-        interval: 1
-        repeat: false
+//    Timer{
+//        id:dieimgstartT
+//        interval: 1
+//        repeat: false
 
-        onTriggered: {
-            playerdie.source = "../../assets/player/playerdie.json"
-            dieimgdeleteT.start()
-        }
-    }
-    Timer{
-        id:dieimgdeleteT
-        interval: 2000
-        repeat: false
+//        onTriggered: {
+//            playerdie.source = "../../assets/player/playerdie.json"
+//            dieimgdeleteT.start()
+//        }
+//    }
+//    Timer{
+//        id:dieimgdeleteT
+//        interval: 2000
+//        repeat: false
 
-        onTriggered: {
-            playerdie.source = ""
-        }
-    }
+//        onTriggered: {
+//            playerdie.source = ""
+//        }
+//    }
 
-    TexturePackerAnimatedSprite{
-        id: playerdie
-        x:player.x
-        y:player.y
-        width: 17
-        height: 17
-        running: true
-        loops: 0
-        source: ""
-        frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
-        interpolate: false
-        frameRate: 5
-    }
+//    TexturePackerAnimatedSprite{
+//        id: playerdie
+//        x:player.x
+//        y:player.y
+//        width: 17
+//        height: 17
+//        running: true
+//        loops: 0
+//        source: ""
+//        frameNames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"]
+//        interpolate: false
+//        frameRate: 5
+//    }
 
-    property int currenttime: 0
+//    property int currenttime: 0
 
-    Timer{
-        id:settimeT
-        interval: 1000
-        running: true
-        repeat: true
+//    Timer{
+//        id:settimeT
+//        interval: 1000
+//        running: true
+//        repeat: true
 
-        onTriggered: {
-            currenttime++
-            timetext = "time:\n   "+currenttime
-        }
-    }
+//        onTriggered: {
+//            currenttime++
+//            timetext = "time:\n  "+currenttime
+//        }
+//    }
 
-    Timer{
-        id:setscoreT
-        interval: 10
-        repeat: false
+//    Timer{
+//        id:setscoreT
+//        interval: 10
+//        repeat: false
 
-        onTriggered: {
-            scoretext = "score:\n   "+gameScene.highscore
-        }
-    }
+//        onTriggered: {
+//            scoretext = "score:\n   "+gameScene.highscore
+//        }
+//    }
 
-    Player{
-        id:player
-        x:20
-        y:100
+//    Player{
+//        id:player
+//        x:20
+//        y:100
 
-        onDieimg1:{
-            dieimgstartT.start()
-        }
-        onEatcake: {
-            setscoreT.start()
-        }
-    }
+//        onDieimg1:{
+//            dieimgstartT.start()
+//        }
+//        onEatcake: {
+//            setscoreT.start()
+//        }
+//        onPlayerdie: {
+//            gameover()
+//            if(gameWindow.state === "gameover")
+//                return
+//            gameWindow.state = "gameOver"
+//        }
+//    }
 
     Wall {height:parent.height; anchors.right:parent.left}
     // right wall

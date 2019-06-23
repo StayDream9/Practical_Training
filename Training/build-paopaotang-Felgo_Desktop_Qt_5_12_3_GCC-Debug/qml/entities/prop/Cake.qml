@@ -37,8 +37,6 @@ EntityBase{
         fixture.onBeginContact: {
           var collidedEntity = other.getBody().target
           if(collidedEntity.entityType === "player") {
-            gameScene.cakenum--
-            gameScene.highscore += 50
 //            randshow()
             removeEntity()
           }

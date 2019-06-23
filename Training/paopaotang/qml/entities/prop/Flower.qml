@@ -77,11 +77,11 @@ EntityBase{
         var propy1 = getRandomNum(0, 16)
         console.debug(propx1,propy1)
 
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 3, "column" : 1, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 10, "column" : 6, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 12, "column" : 11, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 3, "column" : 11, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 22, "column" : 6, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 9, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 10, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 11, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 12, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 3, "column" : 10, "size" : 1 })
     }
 //    function randshowcake2(){
 //        var propx1 = getRandomNum(0, 24)

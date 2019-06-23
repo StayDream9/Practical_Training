@@ -3,6 +3,7 @@ import QtQuick 2.0
 import "entities"
 import "map"
 import "common"
+//import ""
 
 Scene {
     id: gameScene
@@ -14,7 +15,6 @@ Scene {
     property bool gamewin: false
     property int cakenum: 5
     property int highscore: 0
-//    property int score: 0
 
     property alias rightRect: rightRect
     property alias leftRect: leftRect
@@ -23,6 +23,7 @@ Scene {
     property alias shootRect: shootRect
     property alias centerRect: centerRect
     property alias gameScene: gameScene
+//    property alias loader: loader
     // the filename of the current level gets stored here, it is used for loading the
     property string activeLevelFileName
     // the currently loaded level gets stored here
@@ -37,6 +38,14 @@ Scene {
         activeLevelFileName = fileName
     }
 
+    function resetLevel1(){
+        activeLevelFileName = ""
+        entityManager.removeAllEntities()
+//        var toRemoveEntityTypes1 = ["boom", "fire", "fire1", "fire2", "fire3", "cake"]
+//        entityManager.removeEntitiesByFilter(toRemoveEntityTypes1)
+    }
+
+
     //加载关卡
     // load levels at runtime
     Loader {
@@ -44,6 +53,10 @@ Scene {
         source: activeLevelFileName != "" ? "map/" + activeLevelFileName : ""
         onLoaded: {
             // since we did not define a width and height in the level item itself, we are doing it here
+            gameover = false
+            gamewin = false
+            cakenum = 5
+            highscore = 0
             item.width = gameScene.width
             item.height = gameScene.height
             // store the loaded level as activeLevel for easier access
@@ -70,12 +83,14 @@ Scene {
         id: checkpropT
         interval: 100
         repeat: true
+        running: true
 
         onTriggered: {
             checkdie()
             checkprop()
         }
     }
+
 
     function checkdie(){
         if(gameover == true){
@@ -85,9 +100,11 @@ Scene {
     }
     function checkprop(){
             if(cakenum == 0){
-                gamewin = true
+                checkpropT.stop()
+                gamewin = true //游戏胜利，显示胜利界面
                 var toRemoveEntityTypes = ["box", "monster"]
                 entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
+                gameWindow.state = "gamewin"
             }
     }
 

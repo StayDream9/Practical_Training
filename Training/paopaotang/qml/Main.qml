@@ -2,6 +2,7 @@ import Felgo 3.0
 import QtQuick 2.0
 import "menu"
 
+
 GameWindow {
     id: gameWindow
     screenWidth: 960
@@ -80,6 +81,7 @@ GameWindow {
     // game scene to play a level
     GameScene {
         id: gameScene
+
         onBackButtonPressed: {
             gameScene.topRect.opacity = 0
             gameScene.buttomRect.opacity = 0
@@ -90,6 +92,38 @@ GameWindow {
 
             gameWindow.state = "selectLevel"
         }
+    }
+
+    GameWin{
+        id: gameWinScene
+
+        onPlayaPressed: {
+            gameWindow.state = "selectLevel"
+            gameScene.resetLevel1()
+            gameScene.topRect.opacity = 0
+            gameScene.buttomRect.opacity = 0
+            gameScene.leftRect.opacity = 0
+            gameScene.rightRect.opacity = 0
+            gameScene.shootRect.opacity = 0
+            gameScene.centerRect.opacity = 0
+        }
+    }
+
+    GameOverScene {
+      id: gameOverScene
+
+      onPlayPressed: {
+          gameWindow.state = "selectLevel"
+          gameScene.resetLevel1()
+          gameScene.topRect.opacity = 0
+          gameScene.buttomRect.opacity = 0
+          gameScene.leftRect.opacity = 0
+          gameScene.rightRect.opacity = 0
+          gameScene.shootRect.opacity = 0
+          gameScene.centerRect.opacity = 0
+      }
+//      onNetworkPressed: parent.networkPressed()
+//      onUseCoinsPressed: parent.useCoinsPressed()
     }
 
     // menuScene is our first scene, so set the state to menu initially
@@ -117,7 +151,18 @@ GameWindow {
             name: "game"
             PropertyChanges {target: gameScene; opacity: 1}
             PropertyChanges {target: gameWindow; activeScene: gameScene}
+        },
+        State {
+            name: "gameover"
+            PropertyChanges {target: gameOverScene; opacity: 1}
+            PropertyChanges {target: gameWindow; activeScene: gameOverScene}
+        },
+        State {
+            name: "gamewin"
+            PropertyChanges {target: gameWinScene; opacity: 1}
+            PropertyChanges {target: gameWindow; activeScene: gameWinScene}
         }
+
     ]
 }
 

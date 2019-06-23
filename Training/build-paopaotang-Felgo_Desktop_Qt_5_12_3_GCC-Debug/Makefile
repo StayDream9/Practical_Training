@@ -90,6 +90,9 @@ DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/entities/Monster.qml \
 		../paopaotang/qml/entities/Obstacle6.qml \
 		../paopaotang/qml/entities/Obstacle7.qml \
+		../paopaotang/qml/GameOverScene.qml \
+		../paopaotang/qml/menu/MenuOver.qml \
+		../paopaotang/qml/GameWin.qml \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/unix.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/common/linux.conf \

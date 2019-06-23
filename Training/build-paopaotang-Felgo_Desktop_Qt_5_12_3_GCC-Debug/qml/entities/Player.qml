@@ -9,23 +9,14 @@ EntityBase {
     height: 20
 
 //    signal contact
-    signal dieimg1
     signal eatcake
+    signal playerdie
+    signal dieimg1
 
     property alias collider: collider
 //    property alias playerdie: playerdie
     property alias horizontalVelocity: collider.linearVelocity.x
     property alias verticalVelocity: collider.linearVelocity.y
-
-    Timer{
-        id:dieimg
-        interval: 1
-        repeat: false
-
-        onTriggered: {
-            playerdie.source = "../../assets/player/playerdie.json"
-        }
-    }
 
     TexturePackerAnimatedSprite {
         id: playermove
@@ -61,15 +52,18 @@ EntityBase {
             var collidedEntity = other.getBody().target
 
             if(collidedEntity.entityType === "fire" || collidedEntity.entityType === "fire1" || collidedEntity.entityType === "fire2" || collidedEntity.entityType === "fire3") {
-//                dieimg.start();
-                dieimg1()
-                gameScene.gameover = true
+                dieimg1() //发送信号，开始显示死亡动画
+                gameScene.gameover = true//
+                playerdie() //玩家死亡，发送信号，出现gameover界面
                 collidedEntity.removeEntity()
-                // remove the monster
                 removeEntity()
             }
             if(collidedEntity.entityType === "cake"){
                 eatcake()
+                gameScene.cakenum--
+//    //              console.debug(gameScene.cakenum)
+                gameScene.highscore += 50
+
             }
         }
 

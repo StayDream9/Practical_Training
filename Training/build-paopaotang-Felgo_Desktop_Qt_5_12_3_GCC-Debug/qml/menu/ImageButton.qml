@@ -15,8 +15,8 @@ Item {
 
     MultiResolutionImage {
     id: sprite
-    width: 50
-    height: 30
+    width: 100
+    height: 60
     }
 
     MouseArea {

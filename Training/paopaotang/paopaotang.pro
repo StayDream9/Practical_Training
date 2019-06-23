@@ -94,4 +94,7 @@ DISTFILES += \
     qml/entities/prop/Teddy.qml \
     qml/entities/Monster.qml \
     qml/entities/Obstacle6.qml \
-    qml/entities/Obstacle7.qml
+    qml/entities/Obstacle7.qml \
+    qml/GameOverScene.qml \
+    qml/menu/MenuOver.qml \
+    qml/GameWin.qml
