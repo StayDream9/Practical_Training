@@ -39,6 +39,7 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
+    data.cpp
 
 
 android {
@@ -98,3 +99,6 @@ DISTFILES += \
     qml/GameOverScene.qml \
     qml/menu/MenuOver.qml \
     qml/GameWin.qml
+
+HEADERS += \
+    data.h

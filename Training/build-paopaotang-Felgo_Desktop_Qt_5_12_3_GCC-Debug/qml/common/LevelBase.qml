@@ -62,6 +62,10 @@ Item{
         onTriggered: {
             currenttime++
             timetext.text = "time:\n  "+currenttime
+
+//            gameWindow.data1.score = highscore
+//            gameWindow.data1.time = currenttime
+//            data1.saveData()
         }
     }
 
@@ -72,8 +76,13 @@ Item{
 
         onTriggered: {
             scoretext.text = "score:\n   "+gameScene.highscore
-            if(gameScene.highscore === 250)
+            if(gameScene.highscore === 250){
                 settimeT.stop()
+                gameScene.mintime = currenttime
+                gameWindow.data1.time = currenttime//保存时间到json中
+                gameWindow.data1.score = gameScene.highscore
+                gameWindow.data1.saveData()
+            }
         }
     }
 
@@ -92,6 +101,11 @@ Item{
         }
         onPlayerdie: {
             settimeT.stop()
+            gameScene.mintime = currenttime
+            gameWindow.data1.score = gameScene.highscore
+            gameWindow.data1.time = gameScene.mintime
+
+            gameWindow.data1.saveData()
             gameScene.gameover = true
             settimeT.running = false
             if(gameWindow.state === "gameover")
@@ -99,6 +113,11 @@ Item{
             gameWindow.state = "gameover"
         }
     }
+//    Timer{
+//        interval: 1000
+//        running: true;repeat: true
+//        onTriggered: gameWindow.data1.saveData(),console.log(gameWindow.data1.score)
+//    }
 
     Rectangle{
         id:showtime

@@ -22,7 +22,7 @@ Row {
     onClicked: {
       networkPressed()
     }
-    source: "../../assets/menu/bg.jpg"
+    source: "../../assets/menu/paihang1.png"
     }
 
     ImageButton{

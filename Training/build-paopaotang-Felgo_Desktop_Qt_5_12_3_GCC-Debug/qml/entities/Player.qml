@@ -59,11 +59,9 @@ EntityBase {
                 removeEntity()
             }
             if(collidedEntity.entityType === "cake"){
-                eatcake()
-                gameScene.cakenum--
-//    //              console.debug(gameScene.cakenum)
-                gameScene.highscore += 50
-
+                eatcake() //发送吃蛋糕信号给LevelBase处理，开始记分
+                gameScene.cakenum--//蛋糕数量减1
+                gameScene.highscore += 50//分数加50
             }
         }
 

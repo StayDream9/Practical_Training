@@ -14,7 +14,7 @@ Row {
     onClicked: {
       playPressed()
     }
-    source: "../../assets/menu/start.png"
+    source: "../../assets/menu/back.png"
   }
 
   ImageButton {

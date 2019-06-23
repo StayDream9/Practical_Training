@@ -9,7 +9,7 @@ SceneBase {
     signal selectLevelPressed
     // signal indicating that the creditsScene should be displayed
     signal creditsPressed
-
+    signal quitPressed
 
     Image {
       anchors.fill: menuScene.gameWindowAnchorItem
@@ -29,6 +29,7 @@ SceneBase {
 
       onNetworkPressed: creditsPressed()
       onPlayPressed: selectLevelPressed()
+      onQuitPressed: backButtonPressed()
     }
 
 }

@@ -52,9 +52,13 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../paopaotang/main.cpp qrc_resources_user.cpp
+SOURCES       = ../paopaotang/main.cpp \
+		../paopaotang/data.cpp qrc_resources_user.cpp \
+		moc_data.cpp
 OBJECTS       = main.o \
-		qrc_resources_user.o
+		data.o \
+		qrc_resources_user.o \
+		moc_data.o
 DIST          = ../paopaotang/qml/config.json \
 		../paopaotang/qml/Main.qml \
 		../paopaotang/qml/GameScene.qml \
@@ -262,7 +266,6 @@ DIST          = ../paopaotang/qml/config.json \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_post.prf \
-		../paopaotang/.qmake.stash \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/default_pre.prf \
@@ -283,7 +286,8 @@ DIST          = ../paopaotang/qml/config.json \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/yacc.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/lex.prf \
-		../paopaotang/paopaotang.pro  ../paopaotang/main.cpp
+		../paopaotang/paopaotang.pro ../paopaotang/data.h ../paopaotang/main.cpp \
+		../paopaotang/data.cpp
 QMAKE_TARGET  = paopaotang
 DESTDIR       = 
 TARGET        = paopaotang
@@ -464,7 +468,6 @@ Makefile: ../paopaotang/paopaotang.pro /opt/felgo/Felgo/gcc_64/mkspecs/linux-g++
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/default_pre.prf \
@@ -666,7 +669,6 @@ Makefile: ../paopaotang/paopaotang.pro /opt/felgo/Felgo/gcc_64/mkspecs/linux-g++
 /opt/felgo/Felgo/gcc_64/mkspecs/features/qt_config.prf:
 /opt/felgo/Felgo/gcc_64/mkspecs/linux-g++/qmake.conf:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/toolchain.prf:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/default_pre.prf:
@@ -714,7 +716,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/felgo/Felgo/gcc_64/mkspecs/common/felgo/resources_user.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/felgo/Felgo/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../paopaotang/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../paopaotang/data.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../paopaotang/main.cpp ../paopaotang/data.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -757,8 +760,67 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /opt/felgo/Felgo/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h /opt/felgo/Felgo/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_data.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_data.cpp
+moc_data.cpp: ../paopaotang/data.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QObject \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qnamespace.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobal.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qlogging.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qflags.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qmutex.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qnumeric.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstring.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qchar.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearray.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qrefcount.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qarraydata.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringview.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qlist.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qiterator.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qpair.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringlist.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qregexp.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qmetatype.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QJsonObject \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsonvalue.h \
+		moc_predefs.h \
+		/opt/felgo/Felgo/gcc_64/bin/moc
+	/opt/felgo/Felgo/gcc_64/bin/moc $(DEFINES) --include /root/git_work/Training/Training/build-paopaotang-Felgo_Desktop_Qt_5_12_3_GCC-Debug/moc_predefs.h -I/opt/felgo/Felgo/gcc_64/mkspecs/linux-g++ -I/root/git_work/Training/Training/paopaotang -I/opt/felgo/Felgo/gcc_64/include/Felgo -I/opt/felgo/Felgo/gcc_64/include -I/opt/felgo/Felgo/gcc_64/include/QtQuick -I/opt/felgo/Felgo/gcc_64/include/QtWidgets -I/opt/felgo/Felgo/gcc_64/include/QtMultimedia -I/opt/felgo/Felgo/gcc_64/include/QtGui -I/opt/felgo/Felgo/gcc_64/include/QtQml -I/opt/felgo/Felgo/gcc_64/include/QtWebSockets -I/opt/felgo/Felgo/gcc_64/include/QtNetwork -I/opt/felgo/Felgo/gcc_64/include/QtSql -I/opt/felgo/Felgo/gcc_64/include/QtCore -I. -I/usr/include/c++/8.3.0 -I/usr/include/c++/8.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/8.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed -I/usr/include ../paopaotang/data.h -o moc_data.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
@@ -771,7 +833,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -891,6 +953,10 @@ main.o: ../paopaotang/main.cpp /opt/felgo/Felgo/gcc_64/include/QtWidgets/QApplic
 		/opt/felgo/Felgo/gcc_64/include/QtCore/qabstractanimation.h \
 		/opt/felgo/Felgo/gcc_64/include/QtCore/QStringList \
 		/opt/felgo/Felgo/gcc_64/include/QtCore/QVariantMap \
+		../paopaotang/data.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QJsonObject \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/felgo/Felgo/gcc_64/include/QtQml/QQmlApplicationEngine \
 		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlapplicationengine.h \
 		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlengine.h \
@@ -910,8 +976,73 @@ main.o: ../paopaotang/main.cpp /opt/felgo/Felgo/gcc_64/include/QtWidgets/QApplic
 		/opt/felgo/Felgo/gcc_64/include/QtQml/qqmlerror.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../paopaotang/main.cpp
 
+data.o: ../paopaotang/data.cpp ../paopaotang/data.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QObject \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qnamespace.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobal.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qconfig.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qlogging.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qflags.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qmutex.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qnumeric.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstring.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qchar.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearray.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qrefcount.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qarraydata.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringview.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qlist.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qiterator.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qpair.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringlist.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qregexp.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qmetatype.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QJsonObject \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsonvalue.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QFile \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qfile.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qiodevice.h \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/QJsonDocument \
+		/opt/felgo/Felgo/gcc_64/include/QtCore/qjsondocument.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o data.o ../paopaotang/data.cpp
+
 qrc_resources_user.o: qrc_resources_user.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources_user.o qrc_resources_user.cpp
+
+moc_data.o: moc_data.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_data.o moc_data.cpp
 
 ####### Install
 

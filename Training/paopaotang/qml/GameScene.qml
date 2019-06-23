@@ -15,6 +15,7 @@ Scene {
     property bool gamewin: false
     property int cakenum: 5
     property int highscore: 0
+    property int mintime: 0
 
     property alias rightRect: rightRect
     property alias leftRect: leftRect
@@ -38,8 +39,14 @@ Scene {
         activeLevelFileName = fileName
     }
 
+    //重置当前关卡
     function resetLevel1(){
         activeLevelFileName = ""
+        gameover = false
+        gamewin = false
+        cakenum = 5
+        highscore = 0
+        mintime = 0
         entityManager.removeAllEntities()
 //        var toRemoveEntityTypes1 = ["boom", "fire", "fire1", "fire2", "fire3", "cake"]
 //        entityManager.removeEntitiesByFilter(toRemoveEntityTypes1)
@@ -57,6 +64,7 @@ Scene {
             gamewin = false
             cakenum = 5
             highscore = 0
+            mintime = 0
             item.width = gameScene.width
             item.height = gameScene.height
             // store the loaded level as activeLevel for easier access
@@ -94,6 +102,9 @@ Scene {
 
     function checkdie(){
         if(gameover == true){
+//            data1.score = highscore
+//            data1.time = mintime
+//            data1.saveData()
             var toRemoveEntityTypes = ["box", "monster", "cake", "flower"]
             entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
         }
@@ -101,12 +112,21 @@ Scene {
     function checkprop(){
             if(cakenum == 0){
                 checkpropT.stop()
+//                data1.score = highscore
+//                data1.time = mintime
+//                data1.saveData()
                 gamewin = true //游戏胜利，显示胜利界面
                 var toRemoveEntityTypes = ["box", "monster"]
                 entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
                 gameWindow.state = "gamewin"
             }
     }
+//    Timer{
+//        interval: 100
+//        running: true
+//        repeat: true
+//        onTriggered: gameWindow.data1.score=highscore,gameWindow.data1.time=mintime,console.log(highscore,mintime),gameWindow.data1.saveData()
+//    }
 
 
     property var boompoint;

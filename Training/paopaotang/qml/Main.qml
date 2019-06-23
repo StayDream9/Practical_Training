@@ -1,12 +1,14 @@
 import Felgo 3.0
 import QtQuick 2.0
 import "menu"
-
+import com.mycompany.time 1.0
 
 GameWindow {
     id: gameWindow
     screenWidth: 960
     screenHeight: 640
+
+    property alias data1: data1
 
     // create and remove entities at runtime
     EntityManager {
@@ -20,6 +22,21 @@ GameWindow {
           Qt.resolvedUrl("entities/Fire3.qml")
       ]
     }
+
+    Data{
+        id:data1
+    }
+
+    Timer{
+        id:loaddate
+        interval: 10
+        running: true
+        onTriggered: {
+            data1.loadData()
+            console.debug(data1.mintime(), data1.highscore())
+        }
+    }
+
     FontLoader {
       id: gameFont
       source: "../assets/fonts/akaDylan Plain.ttf"
@@ -81,7 +98,7 @@ GameWindow {
     // game scene to play a level
     GameScene {
         id: gameScene
-
+//        data1.mintime: mintimes
         onBackButtonPressed: {
             gameScene.topRect.opacity = 0
             gameScene.buttomRect.opacity = 0
