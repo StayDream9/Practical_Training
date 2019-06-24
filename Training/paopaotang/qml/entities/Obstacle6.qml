@@ -19,7 +19,7 @@ EntityBase{
         id:poolimg
         height: 20
         width: 20
-        source: ""
+        source: "../../assets/wall/pool.png"
     }
 
     CircleCollider{

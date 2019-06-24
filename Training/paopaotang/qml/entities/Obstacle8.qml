@@ -1,34 +1,26 @@
 import QtQuick 2.0
 import Felgo 3.0
 
-//冰桶障碍物
+//蘑菇1障碍物
 EntityBase{
-    id:stump
-    entityType: "stump"
-
-    property int column: 0
-    property int row: 0
-    property int size // gets set in Platform.qml and Ground.qml
-
-    x: row * gameScene.gridSize
-    y: scene.height - (column+1)*gameScene.gridSize
-    width: gameScene.gridSize * size
-    height: gameScene.gridSize
+    id:obstacle8
+    entityType: "obstacle8"
+    z:1
 
     MultiResolutionImage{
-        id:stumpimg
-        height: 20
+        id:mushroom1img
+        height: 30
         width: 20
-        source: "../../../assets/ice/stump.png"
+        source: "../../assets/wall/mushroom1.png"
     }
 
-    CircleCollider{
-        radius: stumpimg.width/2
-        anchors.centerIn: parent
+    BoxCollider{
+        anchors.left: mushroom1img.left
+        anchors.bottom: mushroom1img.bottom
         bodyType: Body.Static
 
-        categories: Circle.Category8
-        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7
+//        categories: Circle.Category8
+//        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7
 
         //碰撞检测
         fixture.onBeginContact: {
@@ -45,6 +37,12 @@ EntityBase{
           }
         }
     }
+    property int column: 0
+    property int row: 0
+    property int size // gets set in Platform.qml and Ground.qml
 
+    x: row * gameScene.gridSize
+    y: scene.height - (column+1.5)*gameScene.gridSize
+    width: gameScene.gridSize * size
+    height: gameScene.gridSize
 }
-

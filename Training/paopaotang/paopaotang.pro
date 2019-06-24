@@ -39,7 +39,9 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    data.cpp
+    data.cpp \
+    data.cpp \
+    main.cpp
 
 
 android {
@@ -98,7 +100,50 @@ DISTFILES += \
     qml/entities/Obstacle7.qml \
     qml/GameOverScene.qml \
     qml/menu/MenuOver.qml \
-    qml/GameWin.qml
+    qml/GameWin.qml \
+    qml/config.json \
+    qml/common/LevelBase.qml \
+    qml/common/MenuButton.qml \
+    qml/common/SceneBase.qml \
+    qml/entities/prop/Cake.qml \
+    qml/entities/prop/Castle.qml \
+    qml/entities/prop/Flower.qml \
+    qml/entities/prop/Teddy.qml \
+    qml/entities/Boom.qml \
+    qml/entities/Box.qml \
+    qml/entities/Fire.qml \
+    qml/entities/Fire1.qml \
+    qml/entities/Fire2.qml \
+    qml/entities/Fire3.qml \
+    qml/entities/Monster.qml \
+    qml/entities/Obstacle1.qml \
+    qml/entities/Obstacle2.qml \
+    qml/entities/Obstacle3.qml \
+    qml/entities/Obstacle4.qml \
+    qml/entities/Obstacle5.qml \
+    qml/entities/Obstacle6.qml \
+    qml/entities/Obstacle7.qml \
+    qml/entities/Player.qml \
+    qml/entities/Wall.qml \
+    qml/map/Level1.qml \
+    qml/map/Level2.qml \
+    qml/map/Level3.qml \
+    qml/menu/CreditsScene.qml \
+    qml/menu/ImageButton.qml \
+    qml/menu/Menu.qml \
+    qml/menu/MenuOver.qml \
+    qml/menu/MenuScene.qml \
+    qml/menu/SelectLevelScene.qml \
+    qml/GameOverScene.qml \
+    qml/GameScene.qml \
+    qml/GameWin.qml \
+    qml/Main.qml \
+    qml/map/Level4.qml \
+    qml/entities/Obstacle8.qml \
+    qml/entities/Obstacle9.qml \
+    qml/entities/House1.qml \
+    qml/entities/House2.qml
 
 HEADERS += \
+    data.h \
     data.h

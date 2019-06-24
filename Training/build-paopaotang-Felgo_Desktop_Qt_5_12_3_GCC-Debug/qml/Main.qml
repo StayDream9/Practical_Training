@@ -36,7 +36,6 @@ GameWindow {
             data1.loadData()
             gameScene.time = data1.time
             gameScene.score = data1.score
-            console.debug(gameScene.mintime, gameScene.highscore)
         }
     }
 
