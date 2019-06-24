@@ -31,9 +31,12 @@ GameWindow {
         id:loaddate
         interval: 10
         running: true
+        repeat: true
         onTriggered: {
             data1.loadData()
-            console.debug(data1.mintime(), data1.highscore())
+            gameScene.time = data1.time
+            gameScene.score = data1.score
+            console.debug(gameScene.mintime, gameScene.highscore)
         }
     }
 

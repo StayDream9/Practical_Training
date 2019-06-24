@@ -13,9 +13,9 @@ int Data::mintime()
 
 void Data::setTime(int time)
 {
-    if(time>m_mintime){
+//    if(time<m_mintime){
         m_mintime=time;
-    }
+//    }
 }
 
 int Data::highscore()

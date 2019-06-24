@@ -266,6 +266,7 @@ DIST          = ../paopaotang/qml/config.json \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_post.prf \
+		../paopaotang/.qmake.stash \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/default_pre.prf \
@@ -468,6 +469,7 @@ Makefile: ../paopaotang/paopaotang.pro /opt/felgo/Felgo/gcc_64/mkspecs/linux-g++
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/felgo/Felgo/gcc_64/mkspecs/features/default_pre.prf \
@@ -669,6 +671,7 @@ Makefile: ../paopaotang/paopaotang.pro /opt/felgo/Felgo/gcc_64/mkspecs/linux-g++
 /opt/felgo/Felgo/gcc_64/mkspecs/features/qt_config.prf:
 /opt/felgo/Felgo/gcc_64/mkspecs/linux-g++/qmake.conf:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/toolchain.prf:
 /opt/felgo/Felgo/gcc_64/mkspecs/features/default_pre.prf:

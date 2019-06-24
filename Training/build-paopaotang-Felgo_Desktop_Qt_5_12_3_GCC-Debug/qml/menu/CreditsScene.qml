@@ -22,6 +22,8 @@ SceneBase {
         onClicked: backButtonPressed()
     }
 
+
+
     Rectangle{
         id:highscoreimg
         width: 300
@@ -71,7 +73,7 @@ SceneBase {
             width: parent.width/2
             horizontalAlignment: Text.AlignHCenter//(1)
             verticalAlignment: Text.AlignVCenter//(2)
-            text:data1.mintime()
+            text:gameScene.time
         }
         Text{
             id:firstscore
@@ -84,17 +86,8 @@ SceneBase {
             width: parent.width/2
             horizontalAlignment: Text.AlignHCenter//(1)
             verticalAlignment: Text.AlignVCenter//(2)
-            text:data1.highscore()
+            text:gameScene.score
         }
     }
-
-    // credits
-//    Text {
-//        font.family: gameFont.name
-//        text: "Credits to: YOU :)"
-//        color: "white"
-//        anchors.centerIn: parent
-//    }
-
 
 }

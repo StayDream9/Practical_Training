@@ -16,6 +16,8 @@ Scene {
     property int cakenum: 5
     property int highscore: 0
     property int mintime: 0
+    property int score: 0
+    property int time: 0
 
     property alias rightRect: rightRect
     property alias leftRect: leftRect
@@ -203,7 +205,7 @@ Scene {
     //向左
     Rectangle{
         id: leftRect
-        x: -90
+        x: -60
         y: 260
         width: 30
         height: 30
@@ -229,7 +231,7 @@ Scene {
     //向下
     Rectangle{
         id: buttomRect
-        x: -60
+        x: -30
         y: 290
         height: 30
         width: 30
@@ -255,7 +257,7 @@ Scene {
     //向上
     Rectangle{
         id:topRect
-        x: -60
+        x: -30
         y: 230
         height: 30
         width: 30
@@ -279,7 +281,7 @@ Scene {
 
     Rectangle{
         id: centerRect
-        x: -60
+        x: -30
         y: 260
         height: 30
         width: 30
@@ -379,22 +381,22 @@ Scene {
     function fire(){
        //火焰向右
             console.debug(boompoint.x,boompoint.y)
-        var destination = Qt.point(boompoint.x+44, boompoint.y+2)
+        var destination = Qt.point(boompoint.x+34, boompoint.y+2)
         var initpoint = Qt.point(boompoint.x+4, boompoint.y+2)
         var realMoveDuration = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire.qml"), {"initpoint": initpoint,"destination": destination, "moveDuration": realMoveDuration})
         //火焰向左
-        var destination1 = Qt.point(boompoint.x-44, boompoint.y+2)
+        var destination1 = Qt.point(boompoint.x-34, boompoint.y+2)
         var initpoint1 = Qt.point(boompoint.x+4, boompoint.y+2)
         var realMoveDuration1 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire1.qml"), {"initpoint": initpoint1,"destination": destination1, "moveDuration": realMoveDuration1})
         //火焰向上
-        var destination2 = Qt.point(boompoint.x+2, boompoint.y-44)
+        var destination2 = Qt.point(boompoint.x+2, boompoint.y-34)
         var initpoint2 = Qt.point(boompoint.x+2, boompoint.y+4)
         var realMoveDuration2 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire2.qml"), {"initpoint": initpoint2,"destination": destination2, "moveDuration": realMoveDuration2})
         //火焰向下
-        var destination3 = Qt.point(boompoint.x+2, boompoint.y+44)
+        var destination3 = Qt.point(boompoint.x+2, boompoint.y+34)
         var initpoint3 = Qt.point(boompoint.x+2, boompoint.y+4)
         var realMoveDuration3 = 500
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("entities/Fire3.qml"), {"initpoint": initpoint3,"destination": destination3, "moveDuration": realMoveDuration3})
