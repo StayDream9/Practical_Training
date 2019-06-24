@@ -52,35 +52,18 @@ EntityBase {
         collisionTestingOnlyMode: true
 
         categories: Box.Category4
-        collidesWith: Circle.Category1 | Circle.Category3 | Circle.Category8 | Circle.Category9 |Circle.Category10 |Circle.Category11 |Circle.Category12
+        collidesWith: Circle.Category1 | Circle.Category3 | Circle.Category8 | Circle.Category9 | Circle.Category11 |Circle.Category12
 
         //碰撞检测
         fixture.onBeginContact: {
 
-          // if the collided type was a projectile, both can be destroyed and the player gets a point
           var collidedEntity = other.getBody().target
           console.debug("collided with entity", collidedEntity.entityType)
-          // monsters could also collide with other monsters because they have a random speed - alternatively, collider categories could be used
-          if(collidedEntity.entityType === "box" || collidedEntity.entityType === "obstacle3") {
-//            monstersDestroyed++
-            // remove the projectile entity
-            collidedEntity.removeEntity()
-            // remove the monster
-            removeEntity()
-          }
+
           if(collidedEntity.entityType === "obstacle1" || collidedEntity.entityType === "obstacle2" || collidedEntity.entityType === "obstacle4" || collidedEntity.entityType === "obstacle5") {
-//            monstersDestroyed++
-
             removeEntity()
           }
-//          if(collidedEntity.entityType === "player"){
-////              playerdie.running = true
 
-//              collidedEntity.removeEntity()
-//              // remove the monster
-//              removeEntity()
-//              fire.die()
-//          }
         }
       }// BoxCollider
 }

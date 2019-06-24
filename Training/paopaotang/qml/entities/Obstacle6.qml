@@ -12,23 +12,36 @@ EntityBase{
 
     x: row * gameScene.gridSize
     y: scene.height - (column+1)*gameScene.gridSize
-    width: gameScene.gridSize * size
+    width: gameScene.gridSize * size*2
     height: gameScene.gridSize
 
     MultiResolutionImage{
         id:poolimg
         height: 20
-        width: 20
+        width: 40
         source: "../../assets/wall/pool.png"
     }
 
-    CircleCollider{
-        radius: poolimg.width/2
-        anchors.centerIn: parent
+    TexturePackerAnimatedSprite{
+        id: hlsimg //泳池上的动画
+        height: parent.height+5
+        width: parent.width+5
+        x:-2
+        y:-10
+        running: true
+        source: "../../assets/flower/hls.json"
+        frameNames: ["leaf1.png", "leaf2.png", "leaf3.png", "leaf4.png", "leaf5.png", "leaf6.png"]
+        interpolate: false
+        frameRate: 5
+    }
+
+    BoxCollider{
+        anchors.left: poolimg.left
+        anchors.bottom: poolimg.bottom
         bodyType: Body.Static
 
         categories: Circle.Category8
-        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7
+        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category9
 
         //碰撞检测
         fixture.onBeginContact: {

@@ -1,0 +1,44 @@
+{"frames": {
+
+"disapp-0.png":
+{
+	"frame": {"x":1,"y":1,"w":42,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":4,"w":42,"h":46},
+	"sourceSize": {"w":58,"h":52}
+},
+"disapp-1.png":
+{
+	"frame": {"x":45,"y":1,"w":36,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":11,"w":36,"h":39},
+	"sourceSize": {"w":58,"h":52}
+},
+"disapp-2.png":
+{
+	"frame": {"x":83,"y":1,"w":39,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":11,"w":39,"h":36},
+	"sourceSize": {"w":58,"h":52}
+},
+"disapp-3.png":
+{
+	"frame": {"x":83,"y":39,"w":33,"h":16},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":20,"w":33,"h":16},
+	"sourceSize": {"w":58,"h":52}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "disapp.png",
+	"format": "RGBA8888",
+	"size": {"w":123,"h":56},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d5a71f351d1767a6a3bf74a268ae71e2:5ecd255e6f2510b071d1b46d5dcd8146:14f36854be2b9ac97e507de2483c326a$"
+}
+}

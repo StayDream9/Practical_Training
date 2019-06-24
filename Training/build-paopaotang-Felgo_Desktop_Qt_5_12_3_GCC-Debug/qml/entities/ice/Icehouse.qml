@@ -25,6 +25,19 @@ EntityBase{
         source: "../../../assets/ice/icehouse.png"
     }
 
+    TexturePackerAnimatedSprite{
+        id: hlsimg //动画
+        height: parent.height+5
+        width: parent.width+5
+        x:-2
+        y:-10
+        running: true
+        source: "../../../assets/flower/hls.json"
+        frameNames: ["star1.png", "star2.png", "star3.png", "star4.png", "star5.png", "star6.png"]
+        interpolate: false
+        frameRate: 5
+    }
+
     BoxCollider{
         anchors.left: icehouseimg.left
         anchors.bottom: icehouseimg.bottom

@@ -14,20 +14,25 @@ EntityBase{
     property int column: 0
     property int row: 0
     property int size // gets set in Platform.qml and Ground.qml
-    property int rand: Math.random()
+    property double rand
 
     //产生随机数
-//    Timer{
-//        id: randT
-//        interval: 10
-//        repeat: true
-//        running: true
+    Timer{
+        id: randT
+        interval: 10
+        repeat: true
+        running: true
 
-//        onTriggered: {
-//            rand = Math.random()
-////            console.debug(rand)
-//        }
-//    }
+        onTriggered: {
+            rand = Math.random()
+//            console.debug(rand)
+        }
+    }
+
+    function getRandomNum(Min,Max){
+        var Range = Max - Min;
+        return (Min+Math.round(rand*Range));
+    }
 
     TexturePackerAnimatedSprite {
       id: flowerimg
@@ -53,6 +58,7 @@ EntityBase{
         fixture.onBeginContact: {
           var collidedEntity = other.getBody().target
           if(collidedEntity.entityType === "player") {
+              monstershow()//出现怪物
             randshowcake1()
 //            randshowcake2()
 //            randshowcake3()
@@ -67,21 +73,33 @@ EntityBase{
 
 
 
-    function getRandomNum(Min,Max){
-        var Range = Max - Min;
-        return (Min+Math.round(rand*Range));
-    }
+
 
     function randshowcake1(){
         var propx1 = getRandomNum(0, 24)
         var propy1 = getRandomNum(0, 16)
         console.debug(propx1,propy1)
 
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 9, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 10, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 11, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 12, "size" : 1 })
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 3, "column" : 10, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 3, "column" : 3, "size" : 1 })
+//        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 0, "column" : 9, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 8, "column" : 7, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 12, "column" : 11, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 20, "column" : 8, "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../prop/Cake.qml"),{ "row" : 15, "column" : 2, "size" : 1 })
+    }
+
+    function monstershow(){
+//        var startX=105
+//        var startY=20
+        var xDirection=0 //
+        var yDirection=0 //
+
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../Monster.qml"),{ "start": Qt.point(140, 160), "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../Monster.qml"),{ "start": Qt.point(220, 120), "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../Monster.qml"),{ "start": Qt.point(260, 280), "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../Monster.qml"),{ "start": Qt.point(380, 140), "size" : 1 })
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("../Monster.qml"),{ "start": Qt.point(100, 120), "size" : 1 })
+
     }
 //    function randshowcake2(){
 //        var propx1 = getRandomNum(0, 24)

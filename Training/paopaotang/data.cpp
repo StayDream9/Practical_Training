@@ -13,10 +13,15 @@ int Data::mintime()
 
 void Data::setTime(int time)
 {
-//    if(time<m_mintime){
-        m_mintime=time;
-//    }
+    m_mintime = time;
 }
+//void Data::setTime(int time, int score)
+//{
+//    if(score == m_highscore){
+//        if(time < m_mintime)
+//            m_mintime = time;
+//    }
+//}
 
 int Data::highscore()
 {

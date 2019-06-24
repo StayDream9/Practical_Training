@@ -31,6 +31,9 @@ EntityBase{
         anchors.bottom: house2img.bottom
         bodyType: Body.Static
 
+        categories: Circle.Category8
+        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category9
+
         //碰撞检测
         fixture.onBeginContact: {
             // if the collided type was a projectile, both can be destroyed and the player gets a point

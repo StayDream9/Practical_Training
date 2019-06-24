@@ -33,7 +33,6 @@ EntityBase{
         x:-2
         y:-10
         running: true
-//        loops: 0
         source: "../../../assets/flower/hls.json"
         frameNames: ["heart1.png", "heart2.png", "heart3.png", "heart4.png", "heart5.png", "heart6.png"]
         interpolate: false

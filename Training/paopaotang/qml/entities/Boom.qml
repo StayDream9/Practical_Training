@@ -6,6 +6,12 @@ EntityBase{
     entityType: "boom"
     width: 18;height: 18
 
+    SoundEffect {
+      volume: 0.8
+      id: boomsound
+      source: "../../assets/snd/474.wav"
+    }
+
     Timer{
         id: boomT
         interval: 2000
@@ -16,6 +22,7 @@ EntityBase{
             squabySprite1.source = ""
             squabySprite2.source = "../../assets/image/boom1.json"
             squabySprite2.running = true
+            boomsound.play()
         }
     }
     Timer{
@@ -27,7 +34,6 @@ EntityBase{
             boom.removeEntity()
     }
         }
-
 
     TexturePackerAnimatedSprite {
       id: squabySprite1

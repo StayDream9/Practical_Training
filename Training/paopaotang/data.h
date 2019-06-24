@@ -14,6 +14,7 @@ signals:
 public:
     explicit Data(QObject *parent = nullptr);
     Q_INVOKABLE int mintime();
+//    Q_INVOKABLE void setTime(int time, int highscore);
     Q_INVOKABLE void setTime(int time);
 
     Q_INVOKABLE int highscore();

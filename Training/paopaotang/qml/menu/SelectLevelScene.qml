@@ -11,7 +11,7 @@ SceneBase {
 
     Image {
       anchors.fill: selectLevelScene.gameWindowAnchorItem
-      source: "../../assets/menu/bg1.jpg"
+      source: "../../assets/menu/select.jpg"
     }
     // back button to leave scene
     MenuButton {

@@ -84,7 +84,7 @@ Scene {
         PhysicsWorld{
             id:physicsWorld
             gravity:Qt.point(0,0)
-            debugDrawVisible: true // enable this for physics debugging
+//            debugDrawVisible: true // enable this for physics debugging
             z: 1000
         }
     }
@@ -114,9 +114,7 @@ Scene {
     function checkprop(){
             if(cakenum == 0){
                 checkpropT.stop()
-//                data1.score = highscore
-//                data1.time = mintime
-//                data1.saveData()
+
                 gamewin = true //游戏胜利，显示胜利界面
                 var toRemoveEntityTypes = ["box", "monster"]
                 entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
@@ -205,7 +203,7 @@ Scene {
     //向左
     Rectangle{
         id: leftRect
-        x: -60
+        x: -90
         y: 260
         width: 30
         height: 30
@@ -231,7 +229,7 @@ Scene {
     //向下
     Rectangle{
         id: buttomRect
-        x: -30
+        x: -60
         y: 290
         height: 30
         width: 30
@@ -257,7 +255,7 @@ Scene {
     //向上
     Rectangle{
         id:topRect
-        x: -30
+        x: -60
         y: 230
         height: 30
         width: 30
@@ -281,7 +279,7 @@ Scene {
 
     Rectangle{
         id: centerRect
-        x: -30
+        x: -60
         y: 260
         height: 30
         width: 30

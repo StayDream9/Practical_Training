@@ -76,7 +76,7 @@ Item{
 
         onTriggered: {
             scoretext.text = "score:\n   "+gameScene.highscore
-            if(gameScene.highscore === 250){
+            if(gameScene.gamewin === true){
                 settimeT.stop()
                 gameScene.mintime = currenttime
                 gameWindow.data1.time = currenttime//保存时间到json中
@@ -91,7 +91,7 @@ Item{
         id:player
         x:20
         y:100
-        z:3
+        z:1
 
         onDieimg1:{
             dieimgstartT.start()

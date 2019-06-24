@@ -40,8 +40,7 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     data.cpp \
-    data.cpp \
-    main.cpp
+
 
 
 android {
@@ -142,8 +141,8 @@ DISTFILES += \
     qml/entities/Obstacle8.qml \
     qml/entities/Obstacle9.qml \
     qml/entities/House1.qml \
-    qml/entities/House2.qml
+    qml/entities/House2.qml \
+    qml/menu/SettingScene.qml
 
 HEADERS += \
-    data.h \
     data.h

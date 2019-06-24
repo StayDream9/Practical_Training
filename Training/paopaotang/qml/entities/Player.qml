@@ -46,7 +46,7 @@ EntityBase {
         force: Qt.point(controller.xAxis*30*32,-controller.yAxis*30*32)
 
         categories: Circle.Category1
-        collidesWith: Circle.Category1 | Circle.Category3 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category8 | Circle.Category9 | Circle.Category10 | Circle.Category11 | Circle.Category12 | Circle.Category13
+        collidesWith: Circle.Category1 | Circle.Category3 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category8 | Circle.Category9 | Circle.Category11 | Circle.Category12 | Circle.Category13
 
         fixture.onBeginContact: {
             var collidedEntity = other.getBody().target
@@ -59,9 +59,17 @@ EntityBase {
                 removeEntity()
             }
             if(collidedEntity.entityType === "cake"){
+//                monstershow()
                 eatcake() //发送吃蛋糕信号给LevelBase处理，开始记分
                 gameScene.cakenum--//蛋糕数量减1
                 gameScene.highscore += 50//分数加50
+            }
+            //碰到怪物后玩家死亡，怪物存在
+            if(collidedEntity.entityType === "monster"){
+                dieimg1() //发送信号，开始显示死亡动画
+                gameScene.gameover = true//
+                playerdie() //玩家死亡，发送信号，出现gameover界面
+                removeEntity()
             }
         }
 
@@ -97,6 +105,8 @@ EntityBase {
       }
     }
     }
+
+
 
     function right_change(){
         playermove.frameNames = ["p1_1.png", "p1_2.png", "p1_3.png", "p1_4.png"]

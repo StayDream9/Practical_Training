@@ -53,6 +53,7 @@ GameWindow {
         }
         onCreditsPressed: gameWindow.state = "credits"
         // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
+        onSetPressed: gameWindow.state = "setting"
         onBackButtonPressed: {
 
             nativeUtils.displayMessageBox(qsTr("Really quit the game?"), "", 2);
@@ -113,6 +114,11 @@ GameWindow {
         }
     }
 
+    SettingScene{
+        id: settingScene
+        onBackButtonPressed: gameWindow.state = "menu"
+    }
+
     GameWin{
         id: gameWinScene
 
@@ -165,6 +171,11 @@ GameWindow {
             name: "credits"
             PropertyChanges {target: creditsScene; opacity: 1}
             PropertyChanges {target: gameWindow; activeScene: creditsScene}
+        },
+        State {
+            name: "setting"
+            PropertyChanges {target: settingScene; opacity: 1}
+            PropertyChanges {target: gameWindow; activeScene: settingScene}
         },
         State {
             name: "game"

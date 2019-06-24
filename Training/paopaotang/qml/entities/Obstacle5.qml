@@ -6,6 +6,15 @@ EntityBase{
     id:obstacle5
     entityType: "obstacle5"
 
+    property int column: 0
+    property int row: 0
+    property int size // gets set in Platform.qml and Ground.qml
+
+    x: row * gameScene.gridSize
+    y: scene.height - (column+1)*gameScene.gridSize
+    width: gameScene.gridSize * size
+    height: gameScene.gridSize
+
     property int rand
 
     MultiResolutionImage{
@@ -21,8 +30,8 @@ EntityBase{
         anchors.centerIn: parent
         bodyType: Body.Static
 
-        categories: Circle.Category12
-        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7
+        categories: Circle.Category8
+        collidesWith: Circle.Category1 | Box.Category4 | Box.Category5 | Box.Category6 | Box.Category7 | Circle.Category9
 
         //碰撞检测
         fixture.onBeginContact: {
@@ -40,12 +49,5 @@ EntityBase{
         }
     }
 
-    property int column: 0
-    property int row: 0
-    property int size // gets set in Platform.qml and Ground.qml
 
-    x: row * gameScene.gridSize
-    y: scene.height - (column+1)*gameScene.gridSize
-    width: gameScene.gridSize * size
-    height: gameScene.gridSize
 }

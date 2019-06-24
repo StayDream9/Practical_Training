@@ -16,5 +16,23 @@ Scene {
         NumberAnimation {property: "opacity"; easing.type: Easing.InOutQuad}
     }
 
+    BackgroundMusic {
+//      loops: SoundEffect.Infinite
+      volume: 0.2
+      id: ambienceMusic
+      // an ogg file is not playable on windows, because the extension is not supported!
+      source: "../../assets/snd/backgroundson.wav"
+    }
+
+    // timer plays the background music
+    Timer {
+      id: timerMusic
+      interval: 100; running: true; repeat: true;
+      onTriggered: {
+        ambienceMusic.play()
+//        running = false
+      }
+    }
+
 }
 

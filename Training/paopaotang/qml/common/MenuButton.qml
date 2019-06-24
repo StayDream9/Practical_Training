@@ -22,6 +22,7 @@ Rectangle {
 
     // this handler is called when the button is clicked.
     signal clicked
+    property bool active: false
 
     Text {
         font.family: gameFont.name
