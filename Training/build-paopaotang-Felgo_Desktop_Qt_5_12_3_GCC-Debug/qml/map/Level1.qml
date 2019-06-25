@@ -804,11 +804,11 @@ Common.LevelBase {
         }
 
         //10
-        Box{
-            row: 2
-            column: 10
-            size: 1
-        }
+                Box{
+                    row: 2
+                    column: 10
+                    size: 1
+                }
         Obstacle1{
             row: 3
             column: 10

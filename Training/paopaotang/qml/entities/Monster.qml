@@ -49,7 +49,6 @@ EntityBase{
     function getRandomNum(Min,Max){
        var Range = Max - Min;
         return (Min+Math.round(rand*Range));
-
     }
     Timer{
        id:timer
@@ -61,24 +60,24 @@ EntityBase{
        }
     }
 
-    Timer{
-        id:monsterdieimg
-        interval: 10
-        repeat: false
+//    Timer{
+//        id:monsterdieimg
+//        interval: 10
+//        repeat: false
 
-        onTriggered: {
-            monsterimg.frameNames = ["monster17.png", "monster18.png", "monster19.png"]
-            monsterdie.start()
-        }
-    }
+//        onTriggered: {
+//            monsterimg.frameNames = ["monster17.png", "monster18.png", "monster19.png"]
+//            monsterdie.start()
+//        }
+//    }
 
-    Timer{
-        id:monsterdie
-        interval: 1000
-        repeat: false
+//    Timer{
+//        id:monsterdie
+//        interval: 1000
+//        repeat: false
 
-        onTriggered: removeEntity()
-    }
+//        onTriggered: removeEntity()
+//    }
 
 
     CircleCollider{
@@ -95,7 +94,7 @@ EntityBase{
             var collidedEntity = other.getBody().target
             if(collidedEntity.entityType === "fire" || collidedEntity.entityType === "fire1" || collidedEntity.entityType === "fire2" || collidedEntity.entityType === "fire3"){
                 collidedEntity.removeEntity()
-//                removeEntity()
+                removeEntity()
                 monsterdieimg.start()
             }
 
